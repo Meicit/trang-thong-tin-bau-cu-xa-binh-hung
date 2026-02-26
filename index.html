@@ -3,98 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bầu Cử Xã Bình Hưng 2026</title>
+    <title>Cổng Bầu Cử Xã Bình Hưng 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        .banner-bg {
-            background: linear-gradient(to right, #1e3a8a, #b91c1c);
-            position: relative;
-        }
-        .banner-bg::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: url('https://www.transparenttextures.com/patterns/cubes.png');
-            opacity: 0.1;
-        }
-        .card-hover:hover { transform: translateY(-5px); transition: 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); transition: 0.3s ease-out; }
         .modal-active { display: flex !important; animation: fadeIn 0.3s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; cursor: zoom-out; }
         #lightbox img { max-width: 90%; max-height: 90%; border: 4px solid white; border-radius: 8px; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-slate-50 text-slate-900 font-sans">
 
     <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img" src=""></div>
 
-    <header class="banner-bg text-white shadow-2xl relative">
-        <div class="container mx-auto px-4 py-6 md:py-8 flex flex-col md:flex-row items-center justify-between gap-4 relative z-10">
-            
-            <div class="flex-shrink-0 animate-pulse">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Emblem_of_Vietnam.svg/800px-Emblem_of_Vietnam.svg.png" 
-                     alt="Quốc huy Việt Nam" class="h-20 w-20 md:h-28 md:w-28 drop-shadow-lg">
-            </div>
+    <header class="bg-gradient-to-r from-red-700 via-red-600 to-red-700 text-white shadow-2xl relative overflow-hidden">
+        <div class="container mx-auto px-4 py-8 md:py-10 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                
+                <div class="flex-shrink-0">
+                    <img src="quoc_huy.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Emblem_of_Vietnam.svg/120px-Emblem_of_Vietnam.svg.png'" 
+                         alt="Quốc huy" class="h-24 w-24 md:h-32 md:w-32 object-contain drop-shadow-lg">
+                </div>
 
-            <div class="text-center px-4">
-                <h1 id="headerTitle" class="text-2xl md:text-4xl font-black uppercase tracking-tighter leading-tight drop-shadow-md">
-                    Đang tải hệ thống...
-                </h1>
-                <div class="h-1 w-32 bg-yellow-400 mx-auto my-3 rounded-full"></div>
-                <p class="text-sm md:text-lg font-bold text-yellow-100 uppercase tracking-widest italic">
-                    Xã Bình Hưng - Nhiệm kỳ 2026 - 2031
-                </p>
-            </div>
+                <div class="text-center flex-1">
+                    <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tighter drop-shadow-lg">
+                        BẦU CỬ ĐẠI BIỂU QUỐC HỘI KHÓA XVI <br class="hidden md:block">
+                        <span class="text-yellow-400">VÀ ĐẠI BIỂU HĐND CÁC CẤP</span>
+                    </h1>
+                    <div class="h-1.5 w-48 bg-yellow-400 mx-auto my-4 rounded-full"></div>
+                    <p class="text-lg md:text-2xl font-bold uppercase tracking-widest italic" id="headerTitle">
+                        Đang tải hệ thống...
+                    </p>
+                </div>
 
-            <div class="flex-shrink-0">
-                <img src="logo_phai.png" onerror="this.src='https://via.placeholder.com/100?text=LOGO+BAU+CU'" 
-                     alt="Logo Bầu cử" class="h-20 w-20 md:h-28 md:w-28 drop-shadow-lg rounded-full border-2 border-yellow-400/30 p-1">
+                <div class="flex-shrink-0">
+                    <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=LOGO'" 
+                         alt="Logo Bầu cử" class="h-24 w-24 md:h-32 md:w-32 object-contain drop-shadow-lg">
+                </div>
             </div>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-10">
-        <div id="feature-cards" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"></div>
+    <main class="container mx-auto px-4 py-8">
+        <div id="feature-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"></div>
 
-        <div class="bg-white rounded-[2.5rem] shadow-2xl p-8 border border-slate-200">
-            <h2 class="text-2xl font-black mb-8 text-blue-900 uppercase flex items-center justify-center md:justify-start">
+        <div class="bg-white rounded-[2.5rem] shadow-xl p-8 border border-slate-200">
+            <h2 class="text-xl font-bold mb-6 text-blue-900 uppercase flex items-center">
                 <i class="fas fa-map-marked-alt mr-3 text-red-600"></i> Khu vực bỏ phiếu
             </h2>
             <div class="relative mb-8">
                 <i class="fas fa-search absolute left-5 top-5 text-slate-400"></i>
-                <input type="text" id="search" onkeyup="doSearch()" placeholder="Tìm tên ấp hoặc địa điểm để tìm nhanh..." 
-                    class="w-full pl-14 pr-6 py-4 bg-slate-100 border-none rounded-2xl focus:ring-2 focus:ring-blue-600 outline-none shadow-inner transition-all">
+                <input type="text" id="search" onkeyup="doSearch()" placeholder="Tìm tên ấp hoặc địa điểm..." 
+                    class="w-full pl-14 pr-6 py-4 bg-slate-100 border-none rounded-2xl focus:ring-2 focus:ring-blue-600 outline-none shadow-inner">
             </div>
             
-            <div class="overflow-x-auto rounded-2xl">
+            <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
-                    <thead class="bg-slate-800 text-white text-xs font-bold uppercase tracking-widest">
+                    <thead class="bg-slate-50 text-slate-500 text-xs font-bold uppercase tracking-widest">
                         <tr>
-                            <th class="p-5">Khu vực</th>
-                            <th class="p-5 text-center">Ấp</th>
-                            <th class="p-5">Địa điểm bỏ phiếu</th>
-                            <th class="p-5 text-right">Số cử tri</th>
+                            <th class="p-4 border-b">Khu vực</th>
+                            <th class="p-4 border-b">Ấp</th>
+                            <th class="p-4 border-b">Địa điểm bỏ phiếu</th>
+                            <th class="p-4 border-b text-right">Số cử tri</th>
                         </tr>
                     </thead>
-                    <tbody id="content" class="divide-y divide-slate-100 bg-white"></tbody>
+                    <tbody id="content" class="divide-y divide-slate-100"></tbody>
                 </table>
             </div>
         </div>
     </main>
 
-    <div id="infoModal" class="fixed inset-0 bg-slate-900/80 hidden items-center justify-center p-4 z-50 backdrop-blur-sm">
-        <div class="bg-white rounded-[3rem] max-w-7xl w-full max-h-[90vh] overflow-y-auto p-10 shadow-2xl relative border-t-8 border-blue-900">
-            <button onclick="closeModal()" class="sticky top-0 float-right text-4xl text-slate-400 hover:text-red-500 transition z-10">&times;</button>
-            <div id="modalTitle" class="mb-10 text-center"></div>
+    <div id="infoModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center p-4 z-50 backdrop-blur-sm">
+        <div class="bg-white rounded-[2.5rem] max-w-7xl w-full max-h-[90vh] overflow-y-auto p-10 shadow-2xl relative">
+            <button onclick="closeModal()" class="sticky top-0 float-right text-4xl text-slate-400 hover:text-red-500 z-10">&times;</button>
+            <div id="modalTitle" class="mb-10 text-center text-center"></div>
             <div id="candidateList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"></div>
         </div>
     </div>
-
-    <footer class="py-12 text-center text-slate-500 text-sm bg-slate-100 border-t border-slate-200">
-        <p class="font-bold">© 2026 ỦY BAN BẦU CỬ XÃ BÌNH HƯNG</p>
-        <p>Tài liệu tuyên truyền bầu cử đại biểu Quốc hội và HĐND các cấp</p>
-    </footer>
 
     <script>
         let globalData = {};
@@ -103,27 +90,29 @@
         async function init() {
             try {
                 const res = await fetch('./data.json?v=' + Date.now());
+                if (!res.ok) throw new Error("Lỗi tải data.json");
                 globalData = await res.json();
                 document.getElementById('headerTitle').innerText = globalData.tieu_de_trang;
 
+                // Thẻ chức năng
                 document.getElementById('feature-cards').innerHTML = globalData.cac_chuc_nang.map(item => `
-                    <div onclick="openModal('${item.id}')" class="card-hover cursor-pointer bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col items-center text-center">
-                        <div class="${item.mau} text-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg mb-4 ring-4 ring-white"><i class="fas ${item.icon} text-2xl"></i></div>
-                        <h3 class="font-black text-sm uppercase text-slate-800 leading-tight">${item.tieu_de}</h3>
-                        <p class="text-[10px] text-slate-400 mt-2 font-medium">${item.mo_ta}</p>
+                    <div onclick="openModal('${item.id}')" class="card-hover cursor-pointer bg-white p-6 rounded-2xl border flex items-center space-x-4 shadow-sm border-slate-200">
+                        <div class="${item.mau} text-white w-14 h-14 rounded-xl flex items-center justify-center shadow-lg"><i class="fas ${item.icon} text-xl"></i></div>
+                        <h3 class="font-bold text-xs uppercase leading-tight text-slate-700 text-center">${item.tieu_de}</h3>
                     </div>
                 `).join('');
 
+                // Bảng 34 khu vực có Link Google Maps
                 document.getElementById('content').innerHTML = globalData.danh_sach_khu_vuc.map(item => `
                     <tr class="hover:bg-blue-50/50 transition">
-                        <td class="p-5 font-black text-blue-900 text-2xl">#${item.khu_vuc}</td>
-                        <td class="p-5 text-sm font-bold text-slate-700 text-center">Ấp ${item.ap}</td>
-                        <td class="p-5 text-sm italic text-slate-500 leading-relaxed">
-                            <a href="${item.map_link}" target="_blank" class="text-blue-700 hover:underline font-bold flex items-center">
+                        <td class="p-5 font-black text-blue-900 text-xl text-center">#${item.khu_vuc}</td>
+                        <td class="p-5 text-sm font-semibold text-slate-700 text-center">Ấp ${item.ap}</td>
+                        <td class="p-5 text-sm italic text-slate-500">
+                            <a href="${item.map_link}" target="_blank" class="text-blue-600 hover:underline font-bold flex items-center">
                                 <i class="fas fa-directions mr-2 text-red-600"></i> ${item.dia_diem}
                             </a>
                         </td>
-                        <td class="p-5 text-right font-black text-red-700 text-xl">${item.so_luong.toLocaleString('vi-VN')}</td>
+                        <td class="p-5 text-right font-black text-red-600 text-lg">${item.so_luong.toLocaleString('vi-VN')}</td>
                     </tr>
                 `).join('');
             } catch (err) { console.error(err); }
@@ -131,17 +120,17 @@
 
         function openModal(id) {
             const f = globalData.cac_chuc_nang.find(x => x.id === id);
-            document.getElementById('modalTitle').innerHTML = `<h2 class="text-4xl font-black uppercase text-blue-900 tracking-tighter">${f.tieu_de}</h2><p class="text-slate-500 mt-2 font-bold uppercase tracking-widest">${f.mo_ta}</p><div class="w-24 h-1.5 bg-red-600 mx-auto mt-6 rounded-full"></div>`;
-            document.getElementById('candidateList').innerHTML = f.ds_ung_vien.map(uv => `
-                <div class="bg-white rounded-[2rem] overflow-hidden shadow-xl border border-slate-100 hover:scale-105 transition-all">
+            document.getElementById('modalTitle').innerHTML = `<h2 class="text-3xl font-black uppercase text-blue-900">${f.tieu_de}</h2><p class="text-slate-500 mt-2 font-medium">${f.mo_ta}</p><div class="w-20 h-1 bg-red-600 mx-auto mt-4 rounded-full"></div>`;
+            document.getElementById('candidateList').innerHTML = f.ds_ung_vien.length === 0 ? `<p class="col-span-full text-center py-20 text-slate-400 italic font-bold">Dữ liệu đang được cập nhật...</p>` : f.ds_ung_vien.map(uv => `
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:scale-105 transition-transform text-center">
                     <div class="aspect-[3/4] bg-slate-200 relative group cursor-zoom-in" onclick="zoomImage('${uv.anh}')">
                         <img src="${uv.anh}" onerror="this.src='https://via.placeholder.com/300x400?text=Chưa+có+ảnh'" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition"><i class="fas fa-search-plus text-white text-3xl"></i></div>
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition"><i class="fas fa-search-plus text-white text-2xl"></i></div>
                     </div>
-                    <div class="p-6 text-center">
+                    <div class="p-5">
                         <h4 class="font-black text-blue-950 uppercase text-sm mb-1 line-clamp-1">${uv.ten}</h4>
-                        <p class="text-[10px] text-red-600 font-black uppercase tracking-widest border-b border-red-100 pb-2 mb-2">${uv.chuc_vu}</p>
-                        <p class="text-[9px] text-slate-400 font-bold">${uv.don_vi}</p>
+                        <p class="text-[10px] text-red-600 font-bold uppercase tracking-widest border-b pb-2 mb-2">${uv.chuc_vu}</p>
+                        <p class="text-[9px] text-slate-400 font-medium">${uv.don_vi}</p>
                     </div>
                 </div>
             `).join('');
