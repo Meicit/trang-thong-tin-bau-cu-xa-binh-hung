@@ -1,5 +1,5 @@
 {
-  "tieu_de_trang": "THÔNG TIN BẦU CỬ XÃ BÌNH HƯNG 2026",
+  "tieu_de_trang": "TRA CỨU THÔNG TIN BẦU CỬ XÃ BÌNH HƯNG 2026",
   "cac_chuc_nang": [
     {
       "id": "dv-quoc-hoi",
@@ -8,11 +8,11 @@
       "icon": "fa-landmark",
       "mau": "bg-red-700",
       "ds_ung_vien": [
-        { "ten": "Ứng cử viên QH 01", "anh": "qh_uv1.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
-        { "ten": "Ứng cử viên QH 02", "anh": "qh_uv2.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
-        { "ten": "Ứng cử viên QH 03", "anh": "qh_uv3.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
-        { "ten": "Ứng cử viên QH 04", "anh": "qh_uv4.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
-        { "ten": "Ứng cử viên QH 05", "anh": "qh_uv5.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" }
+        { "ten": "Ứng cử viên QH 01", "anh": "qh_uv1.jpg", "chuc_vu": "Ứng cử viên ĐB Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 02", "anh": "qh_uv2.jpg", "chuc_vu": "Ứng cử viên ĐB Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 03", "anh": "qh_uv3.jpg", "chuc_vu": "Ứng cử viên ĐB Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 04", "anh": "qh_uv4.jpg", "chuc_vu": "Ứng cử viên ĐB Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 05", "anh": "qh_uv5.jpg", "chuc_vu": "Ứng cử viên ĐB Quốc hội", "don_vi": "Đơn vị số 1" }
       ]
     },
     {
@@ -22,11 +22,11 @@
       "icon": "fa-city",
       "mau": "bg-blue-800",
       "ds_ung_vien": [
-        { "ten": "Ứng cử viên TP 01", "anh": "tp_uv1.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
-        { "ten": "Ứng cử viên TP 02", "anh": "tp_uv2.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
-        { "ten": "Ứng cử viên TP 03", "anh": "tp_uv3.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
-        { "ten": "Ứng cử viên TP 04", "anh": "tp_uv4.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
-        { "ten": "Ứng cử viên TP 05", "anh": "tp_uv5.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" }
+        { "ten": "Ứng cử viên TP 01", "anh": "tp_uv1.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND TP", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 02", "anh": "tp_uv2.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND TP", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 03", "anh": "tp_uv3.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND TP", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 04", "anh": "tp_uv4.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND TP", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 05", "anh": "tp_uv5.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND TP", "don_vi": "Đơn vị bầu cử" }
       ]
     },
     {
@@ -36,13 +36,44 @@
       "icon": "fa-users",
       "mau": "bg-emerald-700",
       "ds_ung_vien": [
-        { "ten": "ÔNG NGUYỄN VĂN C", "anh": "xa_uv_nguyenvanc.jpg", "chuc_vu": "Đại biểu HĐND Xã", "don_vi": "Đơn vị bầu cử số 9" }
+        { "ten": "ÔNG NGUYỄN VĂN C", "anh": "xa_uv_nguyenvanc.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND Xã", "don_vi": "Khu vực số 09 (Ấp 13, 14)" }
       ]
     }
   ],
   "danh_sach_khu_vuc": [
     { "stt": 1, "khu_vuc": "01", "ap": "1, 3", "so_luong": 2914, "dia_diem": "Trường Mầm non Tuệ Đức, số 2 đường số 16, KDC Bình Hưng, ấp 3", "map_link": "https://www.google.com/maps/dir//10.7287387,106.6524035/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
-    { "stt": 2, "khu_vuc": "02", "ap": "2", "so_luong": 1693, "dia_diem": "Trường Mầm non Thủy Tiên cũ, kế Trụ sở UBND xã Bình Hưng", "map_link": "https://www.google.com/maps/dir//10.7269302,106.6549983/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" }
-    /* ... tiếp tục đến 34 điểm ... */
+    { "stt": 2, "khu_vuc": "02", "ap": "2", "so_luong": 1693, "dia_diem": "Trường Mầm non Thủy Tiên cũ, kế Trụ sở UBND xã Bình Hưng", "map_link": "https://www.google.com/maps/dir//10.7269302,106.6549983/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 3, "khu_vuc": "03", "ap": "4", "so_luong": 1262, "dia_diem": "Văn phòng ấp 2-4, địa chỉ số A10/9A đường số 10A ấp 4", "map_link": "https://www.google.com/maps/dir//10" },
+    { "stt": 4, "khu_vuc": "04", "ap": "5, 70", "so_luong": 2908, "dia_diem": "Trường Tiểu học Bình Hưng, số 3, đường 10, KDC Bình Hưng, ấp 5", "map_link": "https://www.google.com/maps/dir//10.7268763,106.652845/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 5, "khu_vuc": "05", "ap": "6, 7, 8", "so_luong": 3279, "dia_diem": "Trường THCS Nguyễn Thái Bình, đường số 2, KDC Bình Hưng, ấp 7", "map_link": "https://www.google.com/maps/dir//10.7236513,106.6525447/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 6, "khu_vuc": "06", "ap": "9, 10, 11", "so_luong": 3556, "dia_diem": "Văn phòng liên ấp 19-25, 29, 30, số 920 Văn Tiến Dũng, ấp 11", "map_link": "https://www.google.com/maps/dir//10.7157612,106.6554824/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 7, "khu_vuc": "07", "ap": "18, 20, 21", "so_luong": 2611, "dia_diem": "Nhà sinh hoạt cộng đồng Block C chung cư Ehomes, ấp 20", "map_link": "https://www.google.com/maps/dir//10.715695,106.6614218/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 8, "khu_vuc": "08", "ap": "12", "so_luong": 1307, "dia_diem": "Nhà số 447/38/8, ấp 12 (Nhà ông Trần Thanh Hoàng)", "map_link": "https://www.google.com/maps/dir//10.731677,106.6583581/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 9, "khu_vuc": "09", "ap": "13, 14", "so_luong": 3427, "dia_diem": "Văn phòng liên ấp 12, 13, 14, 15, số 475, Quốc lộ 50", "map_link": "https://www.google.com/maps/dir//10.7310355,106.6561733/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 10, "khu_vuc": "10", "ap": "15, 16", "so_luong": 3290, "dia_diem": "Nhà số A22/33A, ấp 16 (Nhà bà Lê Thị Hoàng Anh)", "map_link": "https://www.google.com/maps/dir//10.7245614,106.6564418/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 11, "khu_vuc": "11", "ap": "17, 27", "so_luong": 2097, "dia_diem": "Văn phòng ấp 17, 27", "map_link": "https://www.google.com/maps/dir//10.7226821,106.6580661/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 12, "khu_vuc": "12", "ap": "19, 23", "so_luong": 1294, "dia_diem": "Văn phòng ấp 19 - Số 1 đường số 2 KDC Nguyên Sơn", "map_link": "https://www.google.com/maps/dir//10.7170592,106.6636388/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 13, "khu_vuc": "13", "ap": "22, 24, 25", "so_luong": 1316, "dia_diem": "Nhà sinh hoạt cộng đồng MP7 Mizuki", "map_link": "https://www.google.com/maps/dir//10.714338,106.6649704/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 14, "khu_vuc": "14", "ap": "26, 28", "so_luong": 2450, "dia_diem": "Miễu Dừa Dăng, địa chỉ: A34/12DL1, ấp 26", "map_link": "https://www.google.com/maps/dir//10.7326142,106.6606078/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 15, "khu_vuc": "15", "ap": "29, 30", "so_luong": 2277, "dia_diem": "Câu lạc bộ Taekwondo Mizuki, địa chỉ B18/22R ấp 29", "map_link": "https://www.google.com/maps/dir//10.7244449,106.6682968/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 16, "khu_vuc": "16", "ap": "31, 32, 33", "so_luong": 2348, "dia_diem": "Văn phòng ấp 31, 32, 33, 34, 35, số C3/12B Phạm Hùng", "map_link": "https://www.google.com/maps/dir//10.7332527,106.6737486/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 17, "khu_vuc": "17", "ap": "34, 35", "so_luong": 2827, "dia_diem": "Quán ẩm thực Bình Xuyên, số C3/17 Phạm Hùng, ấp 35", "map_link": "https://www.google.com/maps/dir//10.7312288,106.6737482/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 18, "khu_vuc": "18", "ap": "36, 37", "so_luong": 641, "dia_diem": "Văn phòng ấp 36, 37", "map_link": "https://www.google.com/maps/dir//10.7274202,106.6771927/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 19, "khu_vuc": "19", "ap": "38, 45", "so_luong": 1823, "dia_diem": "Trường Tiểu học Phạm Hùng, đường 6A, KDC Đại Phúc", "map_link": "https://www.google.com/maps/dir//10.716996,106.6833373/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 20, "khu_vuc": "20", "ap": "46, 47", "so_luong": 1240, "dia_diem": "Số 1 đường số 14, KDC Him Lam 6A", "map_link": "https://www.google.com/maps/dir//10.732503,106.6875809/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 21, "khu_vuc": "21", "ap": "48, 49, 50", "so_luong": 3178, "dia_diem": "Văn phòng ấp 50, số 23 đường số 7, KDC Trung Sơn", "map_link": "https://www.google.com/maps/dir//10.7362002,106.6901945/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 22, "khu_vuc": "22", "ap": "39, 40", "so_luong": 2168, "dia_diem": "Văn phòng liên ấp 39-43, số 14 đường 15 KDC Him Lam", "map_link": "https://www.google.com/maps/dir//10.7350041,106.6786636/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 23, "khu_vuc": "23", "ap": "41, 42, 43", "so_luong": 2854, "dia_diem": "Điểm sinh hoạt văn hóa ấp 43, địa chỉ C7C/18H1", "map_link": "https://www.google.com/maps/dir//10.7334951,106.6801892/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 24, "khu_vuc": "24", "ap": "44", "so_luong": 1851, "dia_diem": "Văn phòng ấp 44 - 45, địa chỉ: C13/QV58 đường Nguyễn Văn Linh", "map_link": "https://www.google.com/maps/dir//10.7277078,106.6818892/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 25, "khu_vuc": "25", "ap": "51, 52", "so_luong": 2763, "dia_diem": "Văn phòng ấp 51, 52, 53", "map_link": "https://www.google.com/maps/dir//10.6858691,106.652526/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 26, "khu_vuc": "26", "ap": "53, 54", "so_luong": 2571, "dia_diem": "Văn phòng ấp 54, 55, số 1873 đường Văn Tiến Dũng", "map_link": "https://www.google.com/maps/dir//10.688898,106.653882/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 27, "khu_vuc": "27", "ap": "55, 56", "so_luong": 2735, "dia_diem": "Trường Tiểu học Phong Phú 2, KDC Phong Phú 4", "map_link": "https://www.google.com/maps/dir//10.6911248,106.6461218/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 28, "khu_vuc": "28", "ap": "57", "so_luong": 2181, "dia_diem": "Văn phòng ấp 57 đường số 19 KDC Phong Phú 4", "map_link": "https://www.google.com/maps/dir//10.6896941,106.6441357/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 29, "khu_vuc": "29", "ap": "58, 59", "so_luong": 1994, "dia_diem": "Văn phòng ấp 58, 59, số 1758 đường Văn Tiến Dũng", "map_link": "https://www.google.com/maps/dir//10.6925076,106.6549414/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 30, "khu_vuc": "30", "ap": "60, 61, 62", "so_luong": 3196, "dia_diem": "Trụ sở UBND xã Phong Phú cũ, số 294 Trịnh Quang Nghị", "map_link": "https://www.google.com/maps/dir//10.6941073,106.6520432/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 31, "khu_vuc": "31", "ap": "64, 65", "so_luong": 2557, "dia_diem": "Trung tâm học tập cộng đồng, 1511 đường Văn Tiến Dũng", "map_link": "https://www.google.com/maps/dir//10.7027217,106.6546907/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 32, "khu_vuc": "32", "ap": "63, 66", "so_luong": 2744, "dia_diem": "Văn phòng ấp 66, Công viên Gia Hòa đường số 3", "map_link": "https://www.google.com/maps/dir//10.7056872,106.6526071/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 33, "khu_vuc": "33", "ap": "67", "so_luong": 2244, "dia_diem": "Trường Tiểu học Lê Quý Đôn, Số 31 đường 5, KDC 13E", "map_link": "https://www.google.com/maps/dir//10.7045807,106.6463495/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 34, "khu_vuc": "34", "ap": "68, 69", "so_luong": 2654, "dia_diem": "Chung cư Aview, số 1 đường Nguyễn Văn Linh, ấp 69", "map_link": "https://www.google.com/maps/dir//10.7131424,106.6463328/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" }
   ]
 }
