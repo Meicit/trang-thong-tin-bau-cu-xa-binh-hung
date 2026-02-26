@@ -1,139 +1,48 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bầu Cử Xã Bình Hưng 2026</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        .card-hover:hover { transform: translateY(-5px); transition: 0.3s ease; }
-        .modal-active { display: flex !important; animation: fadeIn 0.3s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; cursor: zoom-out; }
-        #lightbox img { max-width: 90%; max-height: 90%; border: 4px solid white; border-radius: 8px; }
-        .logo-header { height: 80px; width: auto; object-fit: contain; }
-    </style>
-</head>
-<body class="bg-slate-50 text-slate-900">
-
-    <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img" src=""></div>
-
-    <header class="bg-blue-900 text-white py-8 shadow-lg relative">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Emblem_of_Vietnam.svg/800px-Emblem_of_Vietnam.svg.png" 
-                 alt="Quốc huy Việt Nam" class="logo-header">
-            
-            <div class="text-center flex-1">
-                <h1 id="headerTitle" class="text-2xl md:text-4xl font-black uppercase tracking-widest">Đang tải dữ liệu...</h1>
-                <p class="mt-2 opacity-80 italic italic">Hệ thống thông tin bầu cử xã Bình Hưng - Nhiệm kỳ 2026-2031</p>
-            </div>
-
-            <img src="logo_phai.png" onerror="this.src='https://via.placeholder.com/80?text=Logo+Phai'" 
-                 alt="Logo Bầu cử" class="logo-header">
-        </div>
-    </header>
-
-    <main class="container mx-auto px-4 py-8">
-        <div id="feature-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"></div>
-
-        <div class="bg-white rounded-[2rem] shadow-xl p-8 border border-slate-200">
-            <h2 class="text-xl font-bold mb-6 text-blue-900 uppercase flex items-center justify-center md:justify-start">
-                <i class="fas fa-map-marked-alt mr-3 text-red-600"></i> Khu vực bỏ phiếu
-            </h2>
-            <input type="text" id="search" onkeyup="doSearch()" placeholder="Nhập tên ấp hoặc địa điểm để tìm nhanh..." 
-                class="w-full p-4 border rounded-2xl mb-8 bg-slate-50 focus:ring-2 focus:ring-blue-500 outline-none shadow-inner">
-            
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead class="bg-slate-50 text-slate-500 text-xs font-bold uppercase tracking-widest text-center">
-                        <tr>
-                            <th class="p-4 border-b">Khu vực</th>
-                            <th class="p-4 border-b">Thông tin Ấp</th>
-                            <th class="p-4 border-b">Địa điểm bỏ phiếu</th>
-                            <th class="p-4 border-b text-right">Cử tri</th>
-                        </tr>
-                    </thead>
-                    <tbody id="content" class="divide-y divide-slate-100"></tbody>
-                </table>
-            </div>
-        </div>
-    </main>
-
-    <div id="infoModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center p-4 z-50 backdrop-blur-sm">
-        <div class="bg-white rounded-[2.5rem] max-w-7xl w-full max-h-[90vh] overflow-y-auto p-10 shadow-2xl relative">
-            <button onclick="closeModal()" class="sticky top-0 float-right text-4xl text-slate-400 hover:text-red-500 transition z-10">&times;</button>
-            <div id="modalTitle" class="mb-10 text-center"></div>
-            <div id="candidateList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"></div>
-        </div>
-    </div>
-
-    <footer class="py-12 text-center text-slate-400 text-sm border-t border-slate-200 mt-12">
-        <p>© 2026 Ủy ban Bầu cử Xã Bình Hưng. Hệ thống phục vụ công tác thông tin cử tri.</p>
-    </footer>
-
-    <script>
-        let globalData = {};
-        function zoomImage(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').style.display = 'flex'; }
-
-        async function init() {
-            try {
-                const res = await fetch('./data.json?v=' + Date.now());
-                if (!res.ok) throw new Error("Lỗi tải data.json");
-                globalData = await res.json();
-                document.getElementById('headerTitle').innerText = globalData.tieu_de_trang;
-
-                document.getElementById('feature-cards').innerHTML = globalData.cac_chuc_nang.map(item => `
-                    <div onclick="openModal('${item.id}')" class="card-hover cursor-pointer bg-white p-6 rounded-2xl border flex items-center space-x-4 shadow-sm border-slate-200">
-                        <div class="${item.mau} text-white w-14 h-14 rounded-xl flex items-center justify-center shadow-lg"><i class="fas ${item.icon} text-xl"></i></div>
-                        <h3 class="font-bold text-xs uppercase leading-tight text-slate-700">${item.tieu_de}</h3>
-                    </div>
-                `).join('');
-
-                document.getElementById('content').innerHTML = globalData.danh_sach_khu_vuc.map(item => {
-                    const locationDisplay = item.map_link 
-                        ? `<a href="${item.map_link}" target="_blank" class="text-blue-600 hover:underline font-medium flex items-center">
-                            <i class="fas fa-directions mr-2 text-red-500"></i> ${item.dia_diem}
-                           </a>`
-                        : item.dia_diem;
-
-                    return `
-                        <tr class="hover:bg-blue-50/50 transition">
-                            <td class="p-5 font-black text-blue-900 text-xl text-center">#${item.khu_vuc}</td>
-                            <td class="p-5 text-sm font-semibold text-slate-700 text-center">Ấp ${item.ap}</td>
-                            <td class="p-5 text-sm italic text-slate-500 leading-relaxed">${locationDisplay}</td>
-                            <td class="p-5 text-right font-black text-red-600 text-lg">${item.so_luong.toLocaleString('vi-VN')}</td>
-                        </tr>
-                    `;
-                }).join('');
-            } catch (err) { console.error(err); }
-        }
-
-        function openModal(id) {
-            const f = globalData.cac_chuc_nang.find(x => x.id === id);
-            document.getElementById('modalTitle').innerHTML = `<h2 class="text-3xl font-black uppercase text-blue-900">${f.tieu_de}</h2><p class="text-slate-500 mt-2 font-medium">${f.mo_ta}</p><div class="w-20 h-1 bg-red-600 mx-auto mt-4 rounded-full"></div>`;
-            document.getElementById('candidateList').innerHTML = (f.ds_ung_vien.length === 0) ? `<p class="col-span-full text-center py-20 text-slate-400 italic font-bold">Dữ liệu đang được cập nhật...</p>` : f.ds_ung_vien.map(uv => `
-                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:scale-105 transition-transform text-center">
-                    <div class="aspect-[3/4] bg-slate-200 relative group cursor-zoom-in" onclick="zoomImage('${uv.anh}')">
-                        <img src="${uv.anh}" onerror="this.src='https://via.placeholder.com/300x400?text=Chưa+có+ảnh'" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition"><i class="fas fa-search-plus text-white text-2xl"></i></div>
-                    </div>
-                    <div class="p-5 text-center">
-                        <h4 class="font-black text-blue-950 uppercase text-sm mb-1">${uv.ten}</h4>
-                        <p class="text-[10px] text-red-600 font-bold uppercase tracking-widest border-b pb-2 mb-2">${uv.chuc_vu}</p>
-                        <p class="text-[9px] text-slate-400 font-medium">${uv.don_vi}</p>
-                    </div>
-                </div>
-            `).join('');
-            document.getElementById('infoModal').classList.add('modal-active');
-        }
-
-        function closeModal() { document.getElementById('infoModal').classList.remove('modal-active'); }
-        function doSearch() {
-            const q = document.getElementById('search').value.toLowerCase();
-            document.querySelectorAll('#content tr').forEach(r => r.style.display = r.innerText.toLowerCase().includes(q) ? '' : 'none');
-        }
-        window.onload = init;
-    </script>
-</body>
-</html>
+{
+  "tieu_de_trang": "THÔNG TIN BẦU CỬ XÃ BÌNH HƯNG 2026",
+  "cac_chuc_nang": [
+    {
+      "id": "dv-quoc-hoi",
+      "tieu_de": "Ứng cử viên Quốc hội",
+      "mo_ta": "Đại biểu Quốc hội khóa XVI nhiệm kỳ 2026 - 2031",
+      "icon": "fa-landmark",
+      "mau": "bg-red-700",
+      "ds_ung_vien": [
+        { "ten": "Ứng cử viên QH 01", "anh": "qh_uv1.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 02", "anh": "qh_uv2.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 03", "anh": "qh_uv3.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 04", "anh": "qh_uv4.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 05", "anh": "qh_uv5.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" }
+      ]
+    },
+    {
+      "id": "dv-thanh-pho",
+      "tieu_de": "Ứng cử viên Thành phố",
+      "mo_ta": "Đại biểu HĐND TP. Hồ Chí Minh nhiệm kỳ 2026 - 2031",
+      "icon": "fa-city",
+      "mau": "bg-blue-800",
+      "ds_ung_vien": [
+        { "ten": "Ứng cử viên TP 01", "anh": "tp_uv1.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 02", "anh": "tp_uv2.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 03", "anh": "tp_uv3.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 04", "anh": "tp_uv4.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 05", "anh": "tp_uv5.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" }
+      ]
+    },
+    {
+      "id": "dv-xa",
+      "tieu_de": "Ứng cử viên cấp Xã",
+      "mo_ta": "Đại biểu HĐND Xã Bình Hưng nhiệm kỳ 2026 - 2031",
+      "icon": "fa-users",
+      "mau": "bg-emerald-700",
+      "ds_ung_vien": [
+        { "ten": "ÔNG NGUYỄN VĂN C", "anh": "xa_uv_nguyenvanc.jpg", "chuc_vu": "Đại biểu HĐND Xã", "don_vi": "Đơn vị bầu cử số 9" }
+      ]
+    }
+  ],
+  "danh_sach_khu_vuc": [
+    { "stt": 1, "khu_vuc": "01", "ap": "1, 3", "so_luong": 2914, "dia_diem": "Trường Mầm non Tuệ Đức, số 2 đường số 16, KDC Bình Hưng, ấp 3", "map_link": "https://www.google.com/maps/dir//10.7287387,106.6524035/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 2, "khu_vuc": "02", "ap": "2", "so_luong": 1693, "dia_diem": "Trường Mầm non Thủy Tiên cũ, kế Trụ sở UBND xã Bình Hưng", "map_link": "https://www.google.com/maps/dir//10.7269302,106.6549983/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" }
+    /* ... tiếp tục đến 34 điểm ... */
+  ]
+}
