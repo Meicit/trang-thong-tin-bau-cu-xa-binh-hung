@@ -8,11 +8,11 @@
       "icon": "fa-landmark",
       "mau": "bg-red-700",
       "ds_ung_vien": [
-        { "ten": "Ứng cử viên QH 01", "anh": "qh_uv1.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
-        { "ten": "Ứng cử viên QH 02", "anh": "qh_uv2.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
-        { "ten": "Ứng cử viên QH 03", "anh": "qh_uv3.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
-        { "ten": "Ứng cử viên QH 04", "anh": "qh_uv4.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
-        { "ten": "Ứng cử viên QH 05", "anh": "qh_uv5.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" }
+        { "ten": "Ứng cử viên QH 01", "anh": "qh_uv1.jpg", "chuc_vu": "Ứng cử viên ĐB Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 02", "anh": "qh_uv2.jpg", "chuc_vu": "Ứng cử viên ĐB Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 03", "anh": "qh_uv3.jpg", "chuc_vu": "Ứng cử viên ĐB Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 04", "anh": "qh_uv4.jpg", "chuc_vu": "Ứng cử viên ĐB Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 05", "anh": "qh_uv5.jpg", "chuc_vu": "Ứng cử viên ĐB Quốc hội", "don_vi": "Đơn vị số 1" }
       ]
     },
     {
@@ -22,11 +22,11 @@
       "icon": "fa-city",
       "mau": "bg-blue-800",
       "ds_ung_vien": [
-        { "ten": "Ứng cử viên TP 01", "anh": "tp_uv1.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
-        { "ten": "Ứng cử viên TP 02", "anh": "tp_uv2.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
-        { "ten": "Ứng cử viên TP 03", "anh": "tp_uv3.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
-        { "ten": "Ứng cử viên TP 04", "anh": "tp_uv4.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
-        { "ten": "Ứng cử viên TP 05", "anh": "tp_uv5.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" }
+        { "ten": "Ứng cử viên TP 01", "anh": "tp_uv1.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND TP", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 02", "anh": "tp_uv2.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND TP", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 03", "anh": "tp_uv3.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND TP", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 04", "anh": "tp_uv4.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND TP", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 05", "anh": "tp_uv5.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND TP", "don_vi": "Đơn vị bầu cử" }
       ]
     },
     {
@@ -36,7 +36,7 @@
       "icon": "fa-users",
       "mau": "bg-emerald-700",
       "ds_ung_vien": [
-        { "ten": "ÔNG NGUYỄN VĂN C", "anh": "xa_uv_nguyenvanc.jpg", "chuc_vu": "Đại biểu HĐND Xã", "don_vi": "Khu vực số 09" }
+        { "ten": "ÔNG NGUYỄN VĂN C", "anh": "xa_uv_nguyenvanc.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND Xã", "don_vi": "Khu vực số 09 (Ấp 13, 14)" }
       ]
     }
   ],
