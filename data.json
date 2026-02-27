@@ -1,5 +1,5 @@
 {
-  "tieu_de_trang": "TRA CỨU THÔNG TIN BẦU CỬ QUỐC HỘI KHÓA XVI VÀ ĐẠI BIỂU HỘI ĐỒNG NHÂN DÂN CÁC CẤP TRÊN ĐỊA BÀN XÃ BÌNH HƯNG 2026",
+  "tieu_de_trang": "TRA CỨU THÔNG TIN BẦU CỬ XÃ BÌNH HƯNG 2026",
   "cac_chuc_nang": [
     {
       "id": "dv-quoc-hoi",
@@ -8,11 +8,11 @@
       "icon": "fa-landmark",
       "mau": "bg-red-700",
       "ds_ung_vien": [
-        { "ten": "Ứng cử viên QH 01", "anh": "qh_uv1.jpg", "chuc_vu": "Ứng cử viên ĐB Quốc hội", "don_vi": "Đơn vị số 1" },
-        { "ten": "Ứng cử viên QH 02", "anh": "qh_uv2.jpg", "chuc_vu": "Ứng cử viên ĐB Quốc hội", "don_vi": "Đơn vị số 1" },
-        { "ten": "Ứng cử viên QH 03", "anh": "qh_uv3.jpg", "chuc_vu": "Ứng cử viên ĐB Quốc hội", "don_vi": "Đơn vị số 1" },
-        { "ten": "Ứng cử viên QH 04", "anh": "qh_uv4.jpg", "chuc_vu": "Ứng cử viên ĐB Quốc hội", "don_vi": "Đơn vị số 1" },
-        { "ten": "Ứng cử viên QH 05", "anh": "qh_uv5.jpg", "chuc_vu": "Ứng cử viên ĐB Quốc hội", "don_vi": "Đơn vị số 1" }
+        { "ten": "Ứng cử viên QH 01", "anh": "qh_uv1.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 02", "anh": "qh_uv2.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 03", "anh": "qh_uv3.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 04", "anh": "qh_uv4.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" },
+        { "ten": "Ứng cử viên QH 05", "anh": "qh_uv5.jpg", "chuc_vu": "Đại biểu Quốc hội", "don_vi": "Đơn vị số 1" }
       ]
     },
     {
@@ -22,11 +22,11 @@
       "icon": "fa-city",
       "mau": "bg-blue-800",
       "ds_ung_vien": [
-        { "ten": "Ứng cử viên TP 01", "anh": "tp_uv1.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND TP", "don_vi": "Đơn vị bầu cử" },
-        { "ten": "Ứng cử viên TP 02", "anh": "tp_uv2.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND TP", "don_vi": "Đơn vị bầu cử" },
-        { "ten": "Ứng cử viên TP 03", "anh": "tp_uv3.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND TP", "don_vi": "Đơn vị bầu cử" },
-        { "ten": "Ứng cử viên TP 04", "anh": "tp_uv4.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND TP", "don_vi": "Đơn vị bầu cử" },
-        { "ten": "Ứng cử viên TP 05", "anh": "tp_uv5.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND TP", "don_vi": "Đơn vị bầu cử" }
+        { "ten": "Ứng cử viên TP 01", "anh": "tp_uv1.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 02", "anh": "tp_uv2.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 03", "anh": "tp_uv3.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 04", "anh": "tp_uv4.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" },
+        { "ten": "Ứng cử viên TP 05", "anh": "tp_uv5.jpg", "chuc_vu": "Đại biểu HĐND Thành phố", "don_vi": "Đơn vị bầu cử" }
       ]
     },
     {
@@ -36,12 +36,12 @@
       "icon": "fa-users",
       "mau": "bg-emerald-700",
       "ds_ung_vien": [
-        { "ten": "ÔNG NGUYỄN VĂN C", "anh": "xa_uv_nguyenvanc.jpg", "chuc_vu": "Ứng cử viên ĐB HĐND Xã", "don_vi": "Khu vực số 09 (Ấp 13, 14)" }
+        { "ten": "ÔNG NGUYỄN VĂN C", "anh": "xa_uv_nguyenvanc.jpg", "chuc_vu": "Đại biểu HĐND Xã", "don_vi": "Khu vực số 09" }
       ]
     }
   ],
   "danh_sach_khu_vuc": [
-    { "stt": 1, "khu_vuc": "01", "ap": "1, 3", "so_luong": 2914, "dia_diem": "Văn phòng ấp 1, 3, Số 1A, đường số 10, Khu dân cư Bình Hưng, ấp 5, xã Bình Hưng", "map_link": "https://www.google.com/maps/dir//10.7269348,106.6536212/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyNC4wIKXMDSoASAFQAw%3D%3D" },
+    { "stt": 1, "khu_vuc": "01", "ap": "1, 3", "so_luong": 2914, "dia_diem": "Trường Mầm non Tuệ Đức, số 2 đường số 16, KDC Bình Hưng, ấp 3", "map_link": "https://www.google.com/maps/dir//10.7287387,106.6524035/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
     { "stt": 2, "khu_vuc": "02", "ap": "2", "so_luong": 1693, "dia_diem": "Trường Mầm non Thủy Tiên cũ, kế Trụ sở UBND xã Bình Hưng", "map_link": "https://www.google.com/maps/dir//10.7269302,106.6549983/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
     { "stt": 3, "khu_vuc": "03", "ap": "4", "so_luong": 1262, "dia_diem": "Văn phòng ấp 2-4, địa chỉ số A10/9A đường số 10A ấp 4", "map_link": "https://www.google.com/maps/dir//10" },
     { "stt": 4, "khu_vuc": "04", "ap": "5, 70", "so_luong": 2908, "dia_diem": "Trường Tiểu học Bình Hưng, số 3, đường 10, KDC Bình Hưng, ấp 5", "map_link": "https://www.google.com/maps/dir//10.7268763,106.652845/@10.7366632,106.6645009,3479m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D" },
