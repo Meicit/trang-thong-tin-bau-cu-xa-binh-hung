@@ -3,7 +3,7 @@
   "cac_chuc_nang": [
     {
       "id": "dv-quoc-hoi",
-      "tieu_de": "Ứng cử viên Quốc hội",
+      "tieu_de": "Ứng cử viên Đại biểu Quốc hội",
       "mo_ta": "Đại biểu Quốc hội khóa XVI nhiệm kỳ 2026 - 2031",
       "icon": "fa-landmark",
       "mau": "bg-red-700",
@@ -17,7 +17,7 @@
     },
     {
       "id": "dv-thanh-pho",
-      "tieu_de": "Ứng cử viên Thành phố",
+      "tieu_de": "Ứng cử viên Đại biểu HĐND Thành phố",
       "mo_ta": "Đại biểu HĐND TP. Hồ Chí Minh nhiệm kỳ 2026 - 2031",
       "icon": "fa-city",
       "mau": "bg-blue-800",
@@ -31,7 +31,7 @@
     },
     {
       "id": "dv-xa",
-      "tieu_de": "Ứng cử viên cấp Xã",
+      "tieu_de": "Ứng cử viên Đại biểu HĐND Xã",
       "mo_ta": "Đại biểu HĐND Xã Bình Hưng nhiệm kỳ 2026 - 2031",
       "icon": "fa-users",
       "mau": "bg-emerald-700",
