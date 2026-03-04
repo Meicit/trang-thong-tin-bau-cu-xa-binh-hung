@@ -142,6 +142,8 @@
                 const res = await fetch('./data.json?v=' + Date.now());
                 globalData = await res.json();
                 document.getElementById('headerTitle').innerText = globalData.tieu_de_trang_1;
+                const res = await fetch('./data.json?v=' + Date.now());
+                globalData = await res.json();
                 document.getElementById('headerTitle').innerText = globalData.tieu_de_trang_2;
                 
                 document.getElementById('feature-cards').innerHTML = globalData.cac_chuc_nang.map(item => `
