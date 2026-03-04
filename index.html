@@ -141,7 +141,7 @@
             try {
                 const res = await fetch('./data.json?v=' + Date.now());
                 globalData = await res.json();
-                document.getElementById('headerTitle').innerText = globalData.tieu_de_trang;
+                document.getElementById('headerTitle').innerText = globalData.tieu_de_trang_1;
                 
                 document.getElementById('feature-cards').innerHTML = globalData.cac_chuc_nang.map(item => `
                     <div onclick="openModal('${item.id}')" class="card-hover cursor-pointer bg-white p-6 rounded-2xl border flex items-center space-x-4 shadow-sm">
