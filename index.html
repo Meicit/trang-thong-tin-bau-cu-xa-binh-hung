@@ -151,7 +151,7 @@
 
                 document.getElementById('content').innerHTML = globalData.danh_sach_khu_vuc.map(item => `
                     <tr class="hover:bg-blue-50 transition border-b">
-                        <td class="p-5 font-black text-blue-900 text-xl text-center">#${item.khu_vuc}</td>
+                        <td class="p-5 font-black text-blue-900 text-xl text-center">${item.khu_vuc}</td>
                         <td class="p-5 text-sm font-bold text-slate-700 text-center">Ấp ${item.ap}</td>
                         <td class="p-5 text-sm italic text-slate-500 leading-relaxed"><a href="${item.map_link}" target="_blank" class="text-blue-600 hover:underline font-bold flex items-center"><i class="fas fa-directions mr-2 text-red-500"></i> ${item.dia_diem}</a></td>
                         <td class="p-5 text-right font-black text-red-600 text-lg">${item.so_luong.toLocaleString('vi-VN')}</td>
