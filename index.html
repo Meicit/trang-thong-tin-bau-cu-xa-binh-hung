@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cổng Thông Tin Bầu Cử Bình Hưng 2026</title>
+    <title>Cổng Bầu Cử Xã Bình Hưng 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -11,16 +11,13 @@
         .modal-active { display: flex !important; animation: fadeIn 0.3s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
-        /* Lightbox & Interactive Map Style */
         #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.97); z-index: 1000; align-items: center; justify-content: center; overflow: hidden; touch-action: none; }
         #lightbox-container { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
-        #lightbox-img { transition: transform 0.1s ease-out; max-width: 90%; max-height: 90%; cursor: grab; user-select: none; border: 2px solid rgba(255,255,255,0.2); border-radius: 4px; }
-        #lightbox-img:active { cursor: grabbing; }
+        #lightbox-img { transition: transform 0.1s ease-out; max-width: 90%; max-height: 90%; cursor: grab; border-radius: 4px; border: 2px solid white; }
         
         .zoom-controls { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 1001; }
         .btn-zoom { background: white; width: 50px; height: 50px; border-radius: 50%; display: flex; items-center; justify-content: center; font-size: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); color: #1e293b; transition: 0.2s; }
-        .btn-zoom:hover { transform: scale(1.1); background: #f1f5f9; }
-
+        
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
     </style>
@@ -30,7 +27,7 @@
     <div id="lightbox">
         <button onclick="closeLightbox()" class="fixed top-6 right-6 text-5xl text-white/50 hover:text-white z-[1002]">×</button>
         <div id="lightbox-container" onmousedown="startPan(event)" onmousemove="doPan(event)" onmouseup="endPan()" onmouseleave="endPan()" onwheel="handleWheel(event)">
-            <img id="lightbox-img" src="" alt="Hình ảnh" draggable="false">
+            <img id="lightbox-img" src="" alt="Bản đồ" draggable="false">
         </div>
         <div class="zoom-controls">
             <button class="btn-zoom" onclick="changeZoom(-0.5)"><i class="fas fa-minus"></i></button>
@@ -43,12 +40,9 @@
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
             <img src="quoc_huy.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Emblem_of_Vietnam.svg/120px-Emblem_of_Vietnam.svg.png'" class="h-24 w-24 md:h-32 md:w-32 object-contain drop-shadow-lg">
             <div class="text-center">
-                <h1 class="text-2xl md:text-5xl font-black uppercase tracking-tighter leading-tight">
-                    BẦU CỬ QUỐC HỘI KHÓA XVI <br>
-                    <span class="text-yellow-400">VÀ ĐẠI BIỂU HĐND CÁC CẤP</span>
-                </h1>
+                <h1 class="text-2xl md:text-5xl font-black uppercase tracking-tighter leading-tight">BẦU CỬ QUỐC HỘI KHÓA XVI <br><span class="text-yellow-400">VÀ ĐẠI BIỂU HĐND CÁC CẤP</span></h1>
                 <div class="h-1.5 w-40 bg-yellow-400 mx-auto my-4 rounded-full"></div>
-                <p class="text-lg md:text-2xl font-bold italic uppercase tracking-widest" id="headerTitle">Đang tải...</p>
+                <p class="text-lg md:text-2xl font-bold italic" id="headerTitle">Đang tải...</p>
             </div>
             <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=LOGO'" class="h-24 w-24 md:h-32 md:w-32 object-contain drop-shadow-lg">
         </div>
@@ -58,42 +52,28 @@
         <div id="feature-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"></div>
 
         <div class="bg-white rounded-[2.5rem] shadow-xl p-6 border border-slate-200 mb-12">
-            <h2 class="text-xl font-bold mb-4 text-blue-900 uppercase flex items-center px-2">
-                <i class="fas fa-video mr-3 text-red-600"></i> Video hướng dẫn bầu cử
-            </h2>
+            <h2 class="text-xl font-bold mb-4 text-blue-900 uppercase flex items-center px-2"><i class="fas fa-video mr-3 text-red-600"></i> Video hướng dẫn bầu cử</h2>
             <div class="rounded-3xl overflow-hidden border bg-black shadow-inner">
-                <video controls class="w-full h-auto max-h-[500px]">
-                    <source src="video.mp4" type="video/mp4">
-                    Trình duyệt không hỗ trợ video.
-                </video>
+                <video controls class="w-full h-auto max-h-[500px]"><source src="video.mp4" type="video/mp4"></video>
             </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-12">
             <div class="lg:col-span-5 bg-white rounded-[2.5rem] shadow-xl p-6 border border-slate-200">
-                <h2 class="text-xl font-bold mb-4 text-blue-900 uppercase flex items-center px-2">
-                    <i class="fas fa-map mr-3 text-red-600"></i> Sơ đồ khu vực bỏ phiếu
-                </h2>
+                <h2 class="text-xl font-bold mb-4 text-blue-900 uppercase flex items-center"><i class="fas fa-map mr-3 text-red-600"></i> Sơ đồ khu vực bỏ phiếu</h2>
                 <div class="relative group cursor-zoom-in overflow-hidden rounded-3xl border h-[550px] bg-slate-100" onclick="openLightbox('ban_do.png')">
-                    <img src="ban_do.png" onerror="this.src='https://via.placeholder.com/800x600?text=ban_do.png'" class="w-full h-full object-contain p-2 transition duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
-                        <span class="bg-white text-blue-900 px-6 py-2 rounded-full font-bold shadow-lg italic">MỞ BẢN ĐỒ TƯƠNG TÁC</span>
-                    </div>
+                    <img src="ban_do.png" class="w-full h-full object-contain p-2 transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition"><span class="bg-white text-blue-900 px-6 py-2 rounded-full font-bold shadow-lg italic">NHẤN ĐỂ PHÓNG TO</span></div>
                 </div>
             </div>
 
             <div class="lg:col-span-7 bg-white rounded-[2.5rem] shadow-xl p-8 border border-slate-200 flex flex-col h-[630px]">
-                <h2 class="text-xl font-bold mb-6 text-blue-900 uppercase flex items-center">
-                    <i class="fas fa-list-ol mr-3 text-red-600"></i> Danh sách tra cứu
-                </h2>
-                <div class="relative mb-6">
-                    <i class="fas fa-search absolute left-6 top-5 text-slate-400"></i>
-                    <input type="text" id="search" onkeyup="doSearch()" placeholder="Tìm tên ấp hoặc địa điểm..." class="w-full pl-14 pr-6 py-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-blue-600 transition shadow-inner">
-                </div>
+                <h2 class="text-xl font-bold mb-6 text-blue-900 uppercase flex items-center"><i class="fas fa-list-ol mr-3 text-red-600"></i> Danh sách tra cứu</h2>
+                <input type="text" id="search" onkeyup="doSearch()" placeholder="Tìm tên ấp hoặc địa điểm..." class="w-full pl-6 pr-6 py-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-blue-600 mb-6 shadow-inner">
                 <div class="overflow-y-auto flex-1 custom-scrollbar pr-2">
                     <table class="w-full text-left border-collapse">
-                        <thead class="sticky top-0 bg-white z-10 text-xs uppercase font-black text-slate-400 tracking-widest border-b shadow-sm">
-                            <tr><th class="p-4">Khu vực</th><th class="p-4 text-center">Ấp</th><th class="p-4">Địa điểm</th><th class="p-4 text-right">Cử tri</th></tr>
+                        <thead class="sticky top-0 bg-white z-10 text-xs uppercase font-black text-slate-400 border-b">
+                            <tr><th class="p-4">Khu vực</th><th class="p-4">Ấp</th><th class="p-4">Địa điểm</th><th class="p-4 text-right">Cử tri</th></tr>
                         </thead>
                         <tbody id="content" class="divide-y divide-slate-100"></tbody>
                     </table>
@@ -114,7 +94,6 @@
         let globalData = {};
         let scale = 1, translateX = 0, translateY = 0, isPanning = false, startX, startY;
 
-        // Xử lý Lightbox (Zoom & Pan)
         function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').style.display = 'flex'; resetZoom(); }
         function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
         function applyTransform() { document.getElementById('lightbox-img').style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`; }
@@ -125,86 +104,38 @@
         function doPan(e) { if (!isPanning) return; translateX = e.clientX - startX; translateY = e.clientY - startY; applyTransform(); }
         function endPan() { isPanning = false; }
 
-        // Phím điều hướng
-        window.addEventListener('keydown', (e) => {
-            if (document.getElementById('lightbox').style.display !== 'flex') return;
-            const step = 40;
-            if (e.key === 'ArrowUp') translateY += step;
-            if (e.key === 'ArrowDown') translateY -= step;
-            if (e.key === 'ArrowLeft') translateX += step;
-            if (e.key === 'ArrowRight') translateX -= step;
-            if (e.key === 'Escape') closeLightbox();
-            applyTransform();
-        });
-
-        // Xử lý mở Modal & Flipbook
         window.openModal = function(id) {
             const f = globalData.cac_chuc_nang.find(x => x.id === id);
             if(!f) return;
-
-            document.getElementById('modalTitle').innerHTML = `
-                <h2 class="text-3xl font-black uppercase text-blue-900">${f.tieu_de}</h2>
-                <p class="text-slate-500 mt-2 font-medium">${f.mo_ta}</p>
-                <div class="w-20 h-1 bg-red-600 mx-auto mt-4 rounded-full"></div>`;
-
-            document.getElementById('candidateList').innerHTML = f.ds_ung_vien.map(uv => {
-                const isXa = (id === "dv-xa" && f.link_flipbook);
-                const openTag = isXa ? `<a href="${f.link_flipbook}" target="_self" class="contents">` : `<div class="contents">`;
-                const closeTag = isXa ? `</a>` : `</div>`;
-                const clickAction = isXa ? "" : `onclick="openLightbox('${uv.anh}')"`;
-
-                return `
-                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:scale-105 transition-transform text-center group cursor-pointer">
-                    ${openTag}
-                        <div class="aspect-[3/4] bg-slate-200 relative group overflow-hidden" ${clickAction}>
-                            <img src="${uv.anh}" onerror="this.src='https://via.placeholder.com/300x400?text=Ảnh'" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
-                                <i class="fas ${isXa ? 'fa-book-open' : 'fa-search-plus'} text-white text-3xl"></i>
-                            </div>
-                        </div>
-                        <div class="p-5">
-                            <h4 class="font-black text-blue-950 uppercase text-[11px] mb-1 leading-tight">${uv.ten}</h4>
-                            <p class="text-[9px] text-red-600 font-bold uppercase tracking-widest border-b pb-1 mb-1 text-center">${uv.chuc_vu}</p>
-                            <p class="text-[8px] text-slate-400 font-medium text-center">${uv.don_vi}</p>
-                        </div>
-                    ${closeTag}
-                </div>`;
-            }).join('');
+            document.getElementById('modalTitle').innerHTML = `<h2 class="text-3xl font-black uppercase text-blue-900">${f.tieu_de}</h2><p class="text-slate-500 mt-2 font-medium">${f.mo_ta}</p><div class="w-20 h-1 bg-red-600 mx-auto mt-4 rounded-full"></div>`;
+            
+            if (id === "dv-xa" && f.link_flipbook) {
+                document.getElementById('candidateList').innerHTML = `<div class="col-span-full w-full h-[70vh] rounded-2xl overflow-hidden border shadow-inner"><iframe src="${f.link_flipbook}" width="100%" height="100%" style="border:0;" allowfullscreen></iframe></div>`;
+            } else {
+                document.getElementById('candidateList').innerHTML = f.ds_ung_vien.map(uv => `
+                    <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:scale-105 transition-transform text-center">
+                        <div class="aspect-[3/4] bg-slate-200 relative group cursor-zoom-in" onclick="openLightbox('${uv.anh}')"><img src="${uv.anh}" onerror="this.src='https://via.placeholder.com/300x400?text=Ảnh'" class="w-full h-full object-cover"></div>
+                        <div class="p-5"><h4 class="font-black text-blue-950 uppercase text-[11px] mb-1 leading-tight">${uv.ten}</h4><p class="text-[9px] text-red-600 font-bold uppercase tracking-widest border-b pb-1 mb-1">${uv.chuc_vu}</p><p class="text-[8px] text-slate-400 font-medium">${uv.don_vi}</p></div>
+                    </div>`).join('');
+            }
             document.getElementById('infoModal').classList.add('modal-active');
         };
 
         window.closeModal = function() { document.getElementById('infoModal').classList.remove('modal-active'); };
 
-        // Khởi tạo hệ thống
         async function init() {
             try {
                 const res = await fetch('./data.json?v=' + Date.now());
                 globalData = await res.json();
                 document.getElementById('headerTitle').innerText = globalData.tieu_de_trang;
-                
-                // Nạp thẻ
-                document.getElementById('feature-cards').innerHTML = globalData.cac_chuc_nang.map(item => `
-                    <div onclick="openModal('${item.id}')" class="card-hover cursor-pointer bg-white p-6 rounded-2xl border flex items-center space-x-4 shadow-sm border-slate-200">
-                        <div class="${item.mau} text-white w-12 h-12 rounded-xl flex items-center justify-center shadow-lg"><i class="fas ${item.icon} text-xl"></i></div>
-                        <h3 class="font-bold text-[11px] uppercase text-slate-700 leading-tight text-center">${item.tieu_de}</h3>
-                    </div>`).join('');
-
-                // Nạp bảng (Bỏ dấu #)
-                document.getElementById('content').innerHTML = globalData.danh_sach_khu_vuc.map(item => `
-                    <tr class="hover:bg-blue-50 transition border-b">
-                        <td class="p-5 font-black text-blue-900 text-xl text-center">${item.khu_vuc}</td>
-                        <td class="p-5 text-sm font-bold text-slate-700 text-center">${item.ap}</td>
-                        <td class="p-5 text-sm italic text-slate-500 leading-relaxed"><a href="${item.map_link}" target="_blank" class="text-blue-600 hover:underline font-bold flex items-center"><i class="fas fa-directions mr-2 text-red-500"></i> ${item.dia_diem}</a></td>
-                        <td class="p-5 text-right font-black text-red-600 text-lg">${item.so_luong.toLocaleString('vi-VN')}</td>
-                    </tr>`).join('');
+                document.getElementById('feature-cards').innerHTML = globalData.cac_chuc_nang.map(item => `<div onclick="openModal('${item.id}')" class="card-hover cursor-pointer bg-white p-6 rounded-2xl border flex items-center space-x-4 shadow-sm border-slate-200"><div class="${item.mau} text-white w-12 h-12 rounded-xl flex items-center justify-center shadow-lg"><i class="fas ${item.icon} text-xl"></i></div><h3 class="font-bold text-[11px] uppercase text-slate-700 leading-tight text-center">${item.tieu_de}</h3></div>`).join('');
+                document.getElementById('content').innerHTML = globalData.danh_sach_khu_vuc.map(item => `<tr class="hover:bg-blue-50 transition border-b"><td class="p-5 font-black text-blue-900 text-xl text-center">${item.khu_vuc}</td><td class="p-5 text-sm font-bold text-slate-700 text-center">${item.ap}</td><td class="p-5 text-sm italic text-slate-500 leading-relaxed"><a href="${item.map_link}" target="_blank" class="text-blue-600 hover:underline font-bold"><i class="fas fa-directions mr-2 text-red-500"></i> ${item.dia_diem}</a></td><td class="p-5 text-right font-black text-red-600 text-lg">${item.so_luong.toLocaleString('vi-VN')}</td></tr>`).join('');
             } catch (err) { console.error(err); }
         }
-
         window.doSearch = function() {
             const q = document.getElementById('search').value.toLowerCase();
             document.querySelectorAll('#content tr').forEach(r => r.style.display = r.innerText.toLowerCase().includes(q) ? '' : 'none');
         };
-
         window.onload = init;
     </script>
 </body>
