@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cổng Bầu Cử Xã Bình Hưng 2026</title>
+    <title>Tra Cứu Bầu Cử Bình Hưng 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -11,11 +11,14 @@
         .modal-active { display: flex !important; animation: fadeIn 0.3s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
+        /* Lightbox Zoom & Pan */
         #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.97); z-index: 1000; align-items: center; justify-content: center; overflow: hidden; touch-action: none; }
-        #lightbox-img { transition: transform 0.1s ease-out; max-width: 90%; max-height: 90%; cursor: grab; border: 2px solid white; border-radius: 8px; }
+        #lightbox-container { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+        #lightbox-img { transition: transform 0.1s ease-out; max-width: 90%; max-height: 90%; cursor: grab; user-select: none; border: 2px solid white; border-radius: 4px; }
         
         .zoom-controls { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 1001; }
         .btn-zoom { background: white; width: 50px; height: 50px; border-radius: 50%; display: flex; items-center; justify-content: center; font-size: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); color: #1e293b; }
+
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
     </style>
@@ -38,7 +41,7 @@
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
             <img src="quoc_huy.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Emblem_of_Vietnam.svg/120px-Emblem_of_Vietnam.svg.png'" class="h-24 w-24 md:h-32 md:w-32 object-contain drop-shadow-lg">
             <div class="text-center">
-                <h1 class="text-2xl md:text-5xl font-black uppercase leading-tight tracking-tighter">BẦU CỬ QUỐC HỘI KHÓA XVI <br><span class="text-yellow-400">VÀ ĐẠI BIỂU HĐND CÁC CẤP</span></h1>
+                <h1 class="text-2xl md:text-5xl font-black uppercase tracking-tighter leading-tight">BẦU CỬ QUỐC HỘI KHÓA XVI <br><span class="text-yellow-400">VÀ ĐẠI BIỂU HĐND CÁC CẤP</span></h1>
                 <div class="h-1.5 w-40 bg-yellow-400 mx-auto my-4 rounded-full"></div>
                 <p class="text-lg md:text-2xl font-bold italic uppercase tracking-widest" id="headerTitle">Đang tải...</p>
             </div>
@@ -49,17 +52,19 @@
     <main class="container mx-auto px-4 py-8">
         <div id="feature-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"></div>
 
-        <div class="bg-white rounded-[2.5rem] shadow-xl p-6 border border-slate-200 mb-12 text-center">
-            <h2 class="text-xl font-bold mb-4 text-blue-900 uppercase flex items-center px-2"><i class="fas fa-video mr-3 text-red-600"></i> Video hướng dẫn</h2>
-            <div class="rounded-3xl overflow-hidden border bg-black"><video controls class="w-full h-auto max-h-[500px]"><source src="video.mp4" type="video/mp4"></video></div>
+        <div class="bg-white rounded-[2.5rem] shadow-xl p-6 border border-slate-200 mb-12">
+            <h2 class="text-xl font-bold mb-4 text-blue-900 uppercase flex items-center px-2"><i class="fas fa-video mr-3 text-red-600"></i> Video hướng dẫn bầu cử</h2>
+            <div class="rounded-3xl overflow-hidden border bg-black shadow-inner">
+                <video controls class="w-full h-auto max-h-[500px]"><source src="video.mp4" type="video/mp4"></video>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-12">
             <div class="lg:col-span-5 bg-white rounded-[2.5rem] shadow-xl p-6 border border-slate-200 text-center">
-                <h2 class="text-xl font-bold mb-4 text-blue-900 uppercase flex items-center"><i class="fas fa-map mr-3 text-red-600"></i> Sơ đồ khu vực</h2>
+                <h2 class="text-xl font-bold mb-4 text-blue-900 uppercase flex items-center"><i class="fas fa-map mr-3 text-red-600"></i> Sơ đồ khu vực bỏ phiếu</h2>
                 <div class="relative group cursor-zoom-in overflow-hidden rounded-3xl border h-[550px] bg-slate-100" onclick="openLightbox('ban_do.png')">
-                    <img src="ban_do.png" class="w-full h-full object-contain p-2">
-                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition"><span class="bg-white text-blue-900 px-6 py-2 rounded-full font-bold shadow-lg">MỞ BẢN ĐỒ TƯƠNG TÁC</span></div>
+                    <img src="ban_do.png" class="w-full h-full object-contain p-2 transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition"><span class="bg-white text-blue-900 px-6 py-2 rounded-full font-bold shadow-lg italic">NHẤN ĐỂ PHÓNG TO</span></div>
                 </div>
             </div>
 
@@ -68,8 +73,8 @@
                 <input type="text" id="search" onkeyup="doSearch()" placeholder="Tìm tên ấp hoặc địa điểm..." class="w-full pl-6 pr-6 py-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-blue-600 mb-6 shadow-inner">
                 <div class="overflow-y-auto flex-1 custom-scrollbar pr-2">
                     <table class="w-full text-left border-collapse">
-                        <thead class="sticky top-0 bg-white z-10 text-xs uppercase font-black text-slate-400 border-b shadow-sm">
-                            <tr><th class="p-4">Khu vực</th><th class="p-4">Ấp</th><th class="p-4">Địa điểm</th><th class="p-4 text-right">Cử tri</th></tr>
+                        <thead class="sticky top-0 bg-white z-10 text-xs uppercase font-black text-slate-400 border-b">
+                            <tr><th class="p-4">Khu vực</th><th class="p-4 text-center">Ấp</th><th class="p-4">Địa điểm</th><th class="p-4 text-right">Cử tri</th></tr>
                         </thead>
                         <tbody id="content" class="divide-y divide-slate-100"></tbody>
                     </table>
@@ -102,17 +107,26 @@
         function doPan(e) { if (!isPanning) return; translateX = e.clientX - startX; translateY = e.clientY - startY; applyTransform(); }
         function endPan() { isPanning = false; }
 
+        // LOGIC MỞ MODAL & NẠP FLIPBOOK
         window.openModal = function(id) {
             const f = globalData.cac_chuc_nang.find(x => x.id === id);
             if(!f) return;
             const modalBody = document.getElementById('candidateList');
             document.getElementById('modalTitle').innerHTML = `<h2 class="text-3xl font-black uppercase text-blue-900">${f.tieu_de}</h2><p class="text-slate-500 mt-2 font-medium text-center">${f.mo_ta}</p><div class="w-20 h-1 bg-red-600 mx-auto mt-4 rounded-full"></div>`;
             
-            if (id === "dv-xa" && f.link_flipbook) {
+            if (id === "dv-xa") {
+                // Nhúng cấu trúc Iframe từ mã chạy tốt của bạn vào Modal
                 modalBody.className = "block w-full";
                 modalBody.innerHTML = `
                 <div class="w-full h-[75vh] rounded-2xl overflow-hidden border-2 border-slate-200 shadow-inner bg-slate-100">
-                    <iframe src="${f.link_flipbook}" width="100%" height="100%" style="border:0;" allowfullscreen="true" allow="clipboard-write" loading="lazy"></iframe>
+                    <iframe 
+                        src="https://heyzine.com/flip-book/738e6f56c1.html" 
+                        class="fp-iframe" 
+                        style="width: 100%; height: 100%; border: none;"
+                        allowfullscreen="allowfullscreen" 
+                        allow="clipboard-write" 
+                        scrolling="no">
+                    </iframe>
                 </div>`;
             } else {
                 modalBody.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6";
