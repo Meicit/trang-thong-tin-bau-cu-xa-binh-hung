@@ -27,7 +27,7 @@
       "tieu_de": "TRA CỨU DANH SÁCH CỬ TRI BẦU CỬ ĐẠI BIỂU QUỐC HỘI KHÓA XVI VÀ ĐẠI BIỂU HỘI ĐỒNG NHÂN DÂN CÁC CẤP NHIỆM KỲ 2026 – 2031",
       "icon": "fa-search-plus",
       "mau": "bg-orange-600",
-      "link_target": "http://103.97.125.207:3003/?zarsrc=31&utm_source=zalo&utm_medium=zalo&utm_campaign=zalo&fbclid=IwY2xjawQZDIxleHRuA2FlbQIxMQBicmlkETFLZTZXTnE3SHdkZTE4Zzk1c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHkDnfiF1P6S-fxqsh_3p2hyMeIYD8bHIgpdW4CdsJQrSboZ9zBrnafYgqq0I_aem_hVaqRcB6epMLv7sGpsPZyw"
+      "link_target": "http://103.97.125.207:3003"
     }
   ],
   "danh_sach_khu_vuc": [
@@ -36,16 +36,16 @@
     { "khu_vuc": "03", "ap": "Ấp 4", "so_luong": "1.262", "dia_diem": "Văn phòng ấp 2-4, địa chỉ số A10/9A đường số 10A ấp 4", "map_link": "https://maps.app.goo.gl/maps/dir//10.7118231,106.6653063" },
     { "khu_vuc": "04", "ap": "Ấp 5, 70", "so_luong": "2.908", "dia_diem": "Trường Tiểu học Bình Hưng, số 3, đường 10, KDC Bình Hưng, ấp 5", "map_link": "https://maps.app.goo.gl/maps/dir//10.7107872,106.6662925" },
     { "khu_vuc": "05", "ap": "Ấp 6, 7, 8", "so_luong": "3.279", "dia_diem": "Trường THCS Nguyễn Thái Bình, đường số 2, KDC Bình Hưng, ấp 7", "map_link": "https://maps.app.goo.gl/maps/dir//10.7093322,106.6677843" },
-    { "khu_vuc": "06", "ap": "Ấp 9, 10, 11", "so_luong": "3.556", "dia_diem": "Văn phòng liên ấp 9, 10, 11, địa chỉ số A26/11 QL 50", "map_link": "https://maps.app.goo.gl/maps/dir//10.7051996,106.665046" },
-    { "khu_vuc": "07", "ap": "Ấp 18, 20, 21", "so_luong": "2.611", "dia_diem": "Nhà sinh hoạt cộng đồng Block C chung cư Ehomes, ấp 20", "map_link": "https://maps.app.goo.gl/maps/dir//10.6974104,106.6493976" },
+    { "khu_vuc": "06", "ap": "Ấp 9, 10, 11", "so_luong": "3.556", "dia_diem": "Văn phòng liên ấp 9, 10, 11, số A26/11 QL 50", "map_link": "https://maps.app.goo.gl/maps/dir//10.7051996,106.665046" },
+    { "khu_vuc": "07", "ap": "Ấp 18, 20, 21", "so_luong": "2.611", "dia_diem": "Nhà sinh hoạt cộng đồng Block C Ehomes, ấp 20", "map_link": "https://maps.app.goo.gl/maps/dir//10.6974104,106.6493976" },
     { "khu_vuc": "08", "ap": "Ấp 12", "so_luong": "1.307", "dia_diem": "Nhà số 447/38/8, ấp 12 (Nhà ông Trần Thanh Hoàng)", "map_link": "https://maps.app.goo.gl/maps/dir//10.7018314,106.6611593" },
-    { "khu_vuc": "09", "ap": "Ấp 13, 14", "so_luong": "3.427", "dia_diem": "Văn phòng liên ấp 12, 13, 14, 15, số 475, QL 50", "map_link": "https://maps.app.goo.gl/maps/dir//10.700146,106.6651211" },
+    { "khu_vuc": "09", "ap": "Ấp 13, 14", "so_luong": "3.427", "dia_diem": "Văn phòng liên ấp 12-15, số 475 QL 50", "map_link": "https://maps.app.goo.gl/maps/dir//10.700146,106.6651211" },
     { "khu_vuc": "10", "ap": "Ấp 15, 16", "so_luong": "3.290", "dia_diem": "Nhà số A22/33A, ấp 16 (Nhà bà Lê Thị Hoàng Anh)", "map_link": "https://maps.app.goo.gl/maps/dir//10.6953792,106.6669925" },
     { "khu_vuc": "11", "ap": "Ấp 17, 27", "so_luong": "2.097", "dia_diem": "Nhà số A25/11, ấp 17 (Nhà ông Huỳnh Văn Ngà)", "map_link": "https://maps.app.goo.gl/maps/dir//10.6918928,106.6642738" },
     { "khu_vuc": "12", "ap": "Ấp 19, 23", "so_luong": "1.294", "dia_diem": "Văn phòng ấp 19 - Số 1 đường số 2 KDC Nguyên Sơn", "map_link": "https://maps.app.goo.gl/maps/dir//10.6925184,106.6508493" },
     { "khu_vuc": "13", "ap": "Ấp 22, 24, 25", "so_luong": "1.316", "dia_diem": "Nhà sinh hoạt cộng đồng MP7 Mizuki", "map_link": "https://maps.app.goo.gl/maps/dir//10.6957262,106.6543666" },
     { "khu_vuc": "14", "ap": "Ấp 26, 28", "so_luong": "2.450", "dia_diem": "Miễu Dừa Dăng, địa chỉ: A34/12DL1, ấp 26", "map_link": "https://maps.app.goo.gl/maps/dir//10.6865611,106.6635292" },
-    { "khu_vuc": "15", "ap": "Ấp 29, 30", "so_luong": "2.277", "dia_diem": "Câu lạc bộ Taekwondo Mizuki, địa chỉ B18/22R ấp 29", "map_link": "https://maps.app.goo.gl/maps/dir//10.684534,106.6617062" },
+    { "khu_vuc": "15", "ap": "Ấp 29, 30", "so_luong": "2.277", "dia_diem": "Câu lạc bộ Taekwondo Mizuki, B18/22R ấp 29", "map_link": "https://maps.app.goo.gl/maps/dir//10.684534,106.6617062" },
     { "khu_vuc": "16", "ap": "Ấp 31, 32, 33", "so_luong": "2.348", "dia_diem": "Văn phòng ấp 31-35, số C3/12B Phạm Hùng", "map_link": "https://maps.app.goo.gl/maps/dir//10.722513,106.679199" },
     { "khu_vuc": "17", "ap": "Ấp 34, 35", "so_luong": "2.827", "dia_diem": "Quán ẩm thực Bình Xuyên, số C3/17 Phạm Hùng, ấp 35", "map_link": "https://maps.app.goo.gl/maps/dir//10.7153403,106.6830501" },
     { "khu_vuc": "18", "ap": "Ấp 36, 37", "so_luong": "641", "dia_diem": "Tổ đình chùa Quan Âm, địa chỉ C6/14 Chánh Hưng", "map_link": "https://maps.app.goo.gl/maps/dir//10.7101889,106.6841262" },
@@ -55,7 +55,7 @@
     { "khu_vuc": "22", "ap": "Ấp 39, 40", "so_luong": "2.168", "dia_diem": "Văn phòng liên ấp 39-43, số 14 đường 15 KDC Him Lam", "map_link": "https://maps.app.goo.gl/maps/dir//10.7348995,106.6946002" },
     { "khu_vuc": "23", "ap": "Ấp 41, 42, 43", "so_luong": "2.854", "dia_diem": "Điểm sinh hoạt văn hóa ấp 43, địa chỉ C7C/18H1", "map_link": "https://maps.app.goo.gl/maps/dir//10.737151,106.6967735" },
     { "khu_vuc": "24", "ap": "Ấp 44", "so_luong": "1.851", "dia_diem": "Văn phòng ấp 44-45, C13/QV58 Nguyễn Văn Linh", "map_link": "https://maps.app.goo.gl/maps/dir//10.714578,106.6865231" },
-    { "khu_vuc": "25", "ap": "Ấp 51, 52", "so_luong": "2.763", "dia_diem": "Văn phòng liên ấp 51-53, số A14/6B, QL 50", "map_link": "https://maps.app.goo.gl/maps/dir//10.722955,106.6625902" },
+    { "khu_vuc": "25", "ap": "Ấp 51, 52", "so_luong": "2.763", "dia_diem": "Văn phòng liên ấp 51-53, số A14/6B, Quốc lộ 50", "map_link": "https://maps.app.goo.gl/maps/dir//10.722955,106.6625902" },
     { "khu_vuc": "26", "ap": "Ấp 53, 54", "so_luong": "2.571", "dia_diem": "Nhà bà Trần Thị Lệ, địa chỉ A18/6C, ấp 54", "map_link": "https://maps.app.goo.gl/maps/dir//10.7186981,106.6631893" },
     { "khu_vuc": "27", "ap": "Ấp 55, 56", "so_luong": "2.735", "dia_diem": "Trường Tiểu học Phong Phú 2, KDC Phong Phú 4", "map_link": "https://maps.app.goo.gl/maps/dir//10.6908064,106.6438965" },
     { "khu_vuc": "28", "ap": "Ấp 57", "so_luong": "2.181", "dia_diem": "Văn phòng ấp 57, đường số 19, KDC Phong Phú 4", "map_link": "https://maps.app.goo.gl/maps/dir//10.6917452,106.6418386" },
