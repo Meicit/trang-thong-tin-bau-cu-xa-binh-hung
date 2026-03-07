@@ -12,7 +12,6 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
         #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.97); z-index: 1000; align-items: center; justify-content: center; overflow: hidden; touch-action: none; }
-        #lightbox-container { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
         #lightbox-img { transition: transform 0.1s ease-out; max-width: 90%; max-height: 90%; cursor: grab; border: 2px solid white; border-radius: 4px; }
         
         .zoom-controls { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 1001; }
@@ -25,7 +24,7 @@
 <body class="bg-slate-50 text-slate-900 font-sans">
 
     <div id="lightbox">
-        <button onclick="closeLightbox()" class="fixed top-6 right-6 text-5xl text-white/50 hover:text-white z-[1002]">&times;</button>
+        <button onclick="closeLightbox()" class="fixed top-6 right-6 text-5xl text-white/50 hover:text-white z-[1002]">×</button>
         <div id="lightbox-container" onmousedown="startPan(event)" onmousemove="doPan(event)" onmouseup="endPan()" onmouseleave="endPan()" onwheel="handleWheel(event)">
             <img id="lightbox-img" src="" alt="Zoom" draggable="false">
         </div>
@@ -37,24 +36,28 @@
     </div>
 
     <header class="bg-gradient-to-r from-red-700 via-red-600 to-red-700 text-white shadow-2xl py-8">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
-            <img src="quoc_huy.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Emblem_of_Vietnam.svg/120px-Emblem_of_Vietnam.svg.png'" class="h-24 w-24 md:h-32 md:w-32 object-contain drop-shadow-lg">
-            <div class="text-center">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10 text-center">
+            <img src="quoc_huy.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Emblem_of_Vietnam.svg/120px-Emblem_of_Vietnam.svg.png'" class="h-24 w-24 md:h-32 md:w-32 object-contain mx-auto md:mx-0 drop-shadow-lg">
+            <div>
                 <h1 class="text-2xl md:text-5xl font-black uppercase tracking-tighter leading-tight">BẦU CỬ QUỐC HỘI KHÓA XVI <br><span class="text-yellow-400">VÀ ĐẠI BIỂU HĐND CÁC CẤP</span></h1>
-                <div class="h-1.5 w-40 bg-yellow-400 mx-auto my-4 rounded-full"></div>
+                <div class="h-1.5 w-40 bg-yellow-400 mx-auto my-4 rounded-full shadow-sm"></div>
                 <p class="text-lg md:text-2xl font-bold italic uppercase tracking-widest" id="headerTitle">Đang tải...</p>
             </div>
-            <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=LOGO'" class="h-24 w-24 md:h-32 md:w-32 object-contain drop-shadow-lg text-center">
+            <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=LOGO'" class="h-24 w-24 md:h-32 md:w-32 object-contain mx-auto md:mx-0 drop-shadow-lg">
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-8">
-        <div id="feature-cards" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-12"></div>
+        <div class="mb-12 space-y-4">
+            <div id="candidate-cards" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+            
+            <div id="search-card-container"></div>
+        </div>
 
         <div class="bg-white rounded-[2.5rem] shadow-xl p-6 border border-slate-200 mb-12">
             <h2 class="text-xl font-bold mb-4 text-blue-900 uppercase flex items-center px-2"><i class="fas fa-video mr-3 text-red-600"></i> Video hướng dẫn bầu cử</h2>
             <div class="rounded-3xl overflow-hidden border bg-black shadow-inner">
-                <video controls class="w-full h-auto max-h-[500px]"><source src="video.mp4" type="video/mp4"></video>
+                <video controls class="w-full h-auto max-h-[500px] shadow-lg"><source src="video.mp4" type="video/mp4"></video>
             </div>
         </div>
 
@@ -63,12 +66,11 @@
                 <h2 class="text-xl font-bold mb-4 text-blue-900 uppercase flex items-center px-2"><i class="fas fa-map mr-3 text-red-600"></i> Sơ đồ khu vực bỏ phiếu</h2>
                 <div class="relative group cursor-zoom-in overflow-hidden rounded-3xl border h-[550px] bg-slate-100" onclick="openLightbox('ban_do.png')">
                     <img src="ban_do.png" class="w-full h-full object-contain p-2 transition duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition"><span class="bg-white text-blue-900 px-6 py-2 rounded-full font-bold shadow-lg italic">PHÓNG TO BẢN ĐỒ</span></div>
                 </div>
             </div>
 
             <div class="lg:col-span-7 bg-white rounded-[2.5rem] shadow-xl p-8 border border-slate-200 flex flex-col h-[630px]">
-                <h2 class="text-xl font-bold mb-6 text-blue-900 uppercase flex items-center"><i class="fas fa-list-ol mr-3 text-red-600"></i> Tra cứu danh sách 34 khu vực</h2>
+                <h2 class="text-xl font-bold mb-6 text-blue-900 uppercase flex items-center"><i class="fas fa-list-ol mr-3 text-red-600"></i> Danh sách 34 khu vực</h2>
                 <input type="text" id="search" onkeyup="doSearch()" placeholder="Tìm tên ấp hoặc địa điểm..." class="w-full pl-6 pr-6 py-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-blue-600 mb-6 shadow-inner">
                 <div class="overflow-y-auto flex-1 custom-scrollbar pr-2">
                     <table class="w-full text-left border-collapse">
@@ -84,7 +86,7 @@
 
     <div id="infoModal" class="fixed inset-0 bg-black/90 hidden items-center justify-center p-4 z-50 backdrop-blur-sm">
         <div id="modalContainer" class="bg-white rounded-[2.5rem] max-w-7xl w-full h-[90vh] overflow-hidden shadow-2xl relative">
-            <button id="closeBtn" onclick="closeModal()" class="absolute top-4 right-6 text-4xl text-white/70 hover:text-white z-[60] transition bg-black/40 w-12 h-12 rounded-full flex items-center justify-center shadow-lg">&times;</button>
+            <button id="closeBtn" onclick="closeModal()" class="absolute top-4 right-6 text-4xl text-white/70 hover:text-white z-[60] transition bg-black/40 w-12 h-12 rounded-full flex items-center justify-center shadow-lg">×</button>
             <div id="modalBody" class="w-full h-full">
                 <div id="candidateList" class="w-full h-full"></div>
             </div>
@@ -108,21 +110,9 @@
         window.openModal = function(id) {
             const f = globalData.cac_chuc_nang.find(x => x.id === id);
             if(!f) return;
-            
             const modalBody = document.getElementById('candidateList');
-            const modalContainer = document.getElementById('modalContainer');
-            
-            modalContainer.style.padding = '0';
-            
-            // Xử lý Iframe
-            modalBody.innerHTML = `
-                <iframe 
-                    src="${f.link_target}" 
-                    style="width: 100%; height: 100%; border: none;"
-                    allowfullscreen="allowfullscreen" 
-                    allow="clipboard-write">
-                </iframe>`;
-                
+            document.getElementById('modalContainer').style.padding = '0';
+            modalBody.innerHTML = `<iframe src="${f.link_target}" style="width: 100%; height: 100%; border: none;" allowfullscreen="allowfullscreen" allow="clipboard-write"></iframe>`;
             document.getElementById('infoModal').classList.add('modal-active');
         };
 
@@ -137,24 +127,39 @@
                 globalData = await res.json();
                 document.getElementById('headerTitle').innerText = globalData.tieu_de_trang;
                 
-                document.getElementById('feature-cards').innerHTML = globalData.cac_chuc_nang.map(item => `
+                // Render 3 thẻ đầu tiên
+                const candidates = globalData.cac_chuc_nang.slice(0, 3);
+                document.getElementById('candidate-cards').innerHTML = candidates.map(item => `
                     <div onclick="openModal('${item.id}')" class="card-hover cursor-pointer bg-white p-4 rounded-2xl border flex items-center space-x-3 shadow-sm border-slate-200">
                         <div class="${item.mau} text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shrink-0">
                             <i class="fas ${item.icon} text-lg"></i>
                         </div>
                         <div class="overflow-hidden">
                             <h3 class="font-bold text-[10px] uppercase text-slate-700 truncate leading-tight">${item.tieu_de}</h3>
-                            <p class="text-[9px] text-slate-400 font-medium italic">Nhấn lật trang xem</p>
+                            <p class="text-[8px] text-slate-400 font-medium italic mt-1">Nhấn để xem</p>
                         </div>
                     </div>`).join('');
+
+                // Render thẻ tra cứu (Thẻ cuối cùng) nằm riêng hàng dưới
+                const searchItem = globalData.cac_chuc_nang[3];
+                document.getElementById('search-card-container').innerHTML = `
+                    <div onclick="openModal('${searchItem.id}')" class="card-hover cursor-pointer bg-white p-4 rounded-2xl border flex items-center space-x-3 shadow-sm border-slate-200 w-full">
+                        <div class="${searchItem.mau} text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shrink-0 animate-pulse">
+                            <i class="fas ${searchItem.icon} text-lg"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                            <h3 class="font-bold text-[10px] uppercase text-slate-700 truncate md:whitespace-normal leading-tight">${searchItem.tieu_de}</h3>
+                            <p class="text-[8px] text-slate-400 font-medium italic mt-1 uppercase tracking-wider text-orange-600">Hệ thống tra cứu dữ liệu cử tri chính thức</p>
+                        </div>
+                    </div>`;
 
                 document.getElementById('content').innerHTML = globalData.danh_sach_khu_vuc.map(item => `
                     <tr class="hover:bg-blue-50 transition border-b">
                         <td class="p-5 font-black text-blue-900 text-xl text-center">${item.khu_vuc}</td>
                         <td class="p-5 text-sm font-bold text-slate-700 text-center">${item.ap}</td>
                         <td class="p-5 text-sm italic text-slate-500 text-center">
-                            <a href="${item.map_link}" target="_blank" class="text-blue-600 font-bold hover:underline leading-relaxed">
-                                <i class="fas fa-directions mr-2 text-red-500 text-lg"></i> ${item.dia_diem}
+                            <a href="${item.map_link}" target="_blank" class="text-blue-600 font-bold hover:underline">
+                                <i class="fas fa-directions mr-2 text-red-500"></i> ${item.dia_diem}
                             </a>
                         </td>
                         <td class="p-5 text-right font-black text-red-600 text-lg">${item.so_luong}</td>
