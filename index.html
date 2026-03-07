@@ -84,8 +84,8 @@
     </main>
 
     <div id="infoModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4 z-50 backdrop-blur-sm">
-        <div class="bg-white rounded-[2.5rem] max-w-7xl w-full max-h-[90vh] overflow-y-auto p-10 shadow-2xl relative">
-            <button onclick="closeModal()" class="sticky top-0 float-right text-4xl text-slate-400 hover:text-red-500 transition z-10">&times;</button>
+        <div id="modalContainer" class="bg-white rounded-[2.5rem] max-w-7xl w-full max-h-[90vh] overflow-y-auto p-10 shadow-2xl relative">
+            <button id="closeBtn" onclick="closeModal()" class="sticky top-0 float-right text-4xl text-slate-400 hover:text-red-500 transition z-50">&times;</button>
             <div id="modalTitle" class="mb-10 text-center"></div>
             <div id="modalBody" class="w-full">
                 <div id="candidateList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"></div>
@@ -107,28 +107,38 @@
         function doPan(e) { if (!isPanning) return; translateX = e.clientX - startX; translateY = e.clientY - startY; applyTransform(); }
         function endPan() { isPanning = false; }
 
-        // LOGIC MỞ MODAL & NẠP FLIPBOOK
         window.openModal = function(id) {
             const f = globalData.cac_chuc_nang.find(x => x.id === id);
             if(!f) return;
-            const modalBody = document.getElementById('candidateList');
-            document.getElementById('modalTitle').innerHTML = `<h2 class="text-3xl font-black uppercase text-blue-900">${f.tieu_de}</h2><p class="text-slate-500 mt-2 font-medium text-center">${f.mo_ta}</p><div class="w-20 h-1 bg-red-600 mx-auto mt-4 rounded-full"></div>`;
             
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('candidateList');
+            const modalContainer = document.getElementById('modalContainer');
+            const closeBtn = document.getElementById('closeBtn');
+
             if (id === "dv-xa") {
-                // Nhúng cấu trúc Iframe từ mã chạy tốt của bạn vào Modal
-                modalBody.className = "block w-full";
+                // Tối ưu hóa cho Flipbook: Toàn màn hình modal, không tiêu đề
+                modalTitle.style.display = 'none';
+                modalContainer.style.padding = '0';
+                closeBtn.className = "absolute top-4 right-6 text-4xl text-white/70 hover:text-white z-[60] transition bg-black/30 w-12 h-12 rounded-full flex items-center justify-center";
+                
+                modalBody.className = "block w-full h-[85vh]";
                 modalBody.innerHTML = `
-                <div class="w-full h-[75vh] rounded-2xl overflow-hidden border-2 border-slate-200 shadow-inner bg-slate-100">
-                    <iframe 
-                        src="https://heyzine.com/flip-book/f1c21d04b0.html" 
-                        class="fp-iframe" 
-                        style="width: 100%; height: 100%; border: none;"
-                        allowfullscreen="allowfullscreen" 
-                        allow="clipboard-write" 
-                        scrolling="no">
-                    </iframe>
-                </div>`;
+                <iframe 
+                    src="https://heyzine.com/flip-book/738e6f56c1.html" 
+                    style="width: 100%; height: 100%; border: none;"
+                    allowfullscreen="allowfullscreen" 
+                    allow="clipboard-write" 
+                    scrolling="no">
+                </iframe>`;
             } else {
+                // Hiển thị chuẩn cho Quốc hội & TP
+                modalTitle.style.display = 'block';
+                modalContainer.style.padding = '2.5rem';
+                closeBtn.className = "sticky top-0 float-right text-4xl text-slate-400 hover:text-red-500 transition z-50";
+                
+                modalTitle.innerHTML = `<h2 class="text-3xl font-black uppercase text-blue-900 text-center">${f.tieu_de}</h2><p class="text-slate-500 mt-2 font-medium text-center">${f.mo_ta}</p><div class="w-20 h-1 bg-red-600 mx-auto mt-4 rounded-full"></div>`;
+                
                 modalBody.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6";
                 modalBody.innerHTML = f.ds_ung_vien.map(uv => `
                     <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:scale-105 transition-transform text-center">
@@ -139,7 +149,10 @@
             document.getElementById('infoModal').classList.add('modal-active');
         };
 
-        window.closeModal = function() { document.getElementById('infoModal').classList.remove('modal-active'); };
+        window.closeModal = function() {
+            document.getElementById('infoModal').classList.remove('modal-active');
+            document.getElementById('candidateList').innerHTML = ''; // Reset nội dung
+        };
 
         async function init() {
             try {
