@@ -3,24 +3,24 @@
   "cac_chuc_nang": [
     {
       "id": "dv-quoc-hoi",
-      "tieu_de": "Ứng cử viên Quốc hội",
+      "tieu_de": "ỨNG CỬ VIÊN ĐẠI BIỂU QUỐC HỘI KHÓA XVI",
       "icon": "fa-landmark",
       "mau": "bg-red-700",
       "link_target": "https://heyzine.com/flip-book/f289d2fba5.html"
     },
     {
       "id": "dv-thanh-pho",
-      "tieu_de": "Ứng cử viên Thành phố",
+      "tieu_de": "ỨNG CỬ VIÊN ĐẠI BIỂU HỘI ĐỒNG NHÂN DÂN THÀNH PHỐ",
       "icon": "fa-city",
       "mau": "bg-blue-800",
       "link_target": "https://heyzine.com/flip-book/fe9d6c0358.html"
     },
     {
       "id": "dv-xa",
-      "tieu_de": "Ứng cử viên cấp Xã",
+      "tieu_de": "ỨNG CỬ VIÊN ĐẠI BIỂU HĐND XÃ BÌNH HƯNG",
       "icon": "fa-users",
       "mau": "bg-emerald-700",
-      "link_target": "https://heyzine.com/flip-book/f1c21d04b0.html"
+      "link_target": "https://heyzine.com/flip-book/eff50ee88d.html"
     },
     {
       "id": "dv-tra-cuu",
