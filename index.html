@@ -97,16 +97,26 @@
 
     <div id="lightbox">
        
+    <div id="lightbox">
+    <button onclick="closeLightbox()" class="btn-close-top">
+        <i class="fas fa-times-circle"></i>
     </button>
-        <button onclick="closeLightbox()" class="fixed top-6 right-6 text-5xl text-white/50 hover:text-white z-[1002]">×</button>
-        <div id="lightbox-container" onmousedown="startPan(event)" onmousemove="doPan(event)" onmouseup="endPan()" onmouseleave="endPan()" onwheel="handleWheel(event)">
-            <img id="lightbox-img" src="" alt="Zoom" draggable="false">
-        </div>
-        <div class="zoom-controls">
-            <button class="btn-zoom" onclick="changeZoom(-0.5)"><i class="fas fa-minus"></i></button>
-            <button class="btn-zoom" onclick="resetZoom()"><i class="fas fa-sync-alt"></i></button>
-            <button class="btn-zoom" onclick="changeZoom(0.5)"><i class="fas fa-plus"></i></button>
-        </div>
+    
+    <div id="lightbox-container" class="w-full h-full flex items-center justify-center" onmousedown="startPan(event)" onmousemove="doPan(event)" onmouseup="endPan()" onmouseleave="endPan()" onwheel="handleWheel(event)">
+        <img id="lightbox-img" src="" alt="Sơ đồ" class="pointer-events-none select-none">
+    </div>
+
+    <div class="zoom-controls" style="bottom: 110px;">
+        <button class="btn-zoom" onclick="changeZoom(-0.5)"><i class="fas fa-search-minus"></i></button>
+        <button class="btn-zoom" onclick="resetZoom()"><i class="fas fa-sync-alt"></i></button>
+        <button class="btn-zoom" onclick="changeZoom(0.5)"><i class="fas fa-search-plus"></i></button>
+    </div>
+
+    <button onclick="closeLightbox()" class="btn-close-bottom">
+        <i class="fas fa-times"></i> ĐÓNG XEM SƠ ĐỒ
+    </button>
+</div>
+
     </div>
 
     <header class="bg-gradient-to-r from-red-800 via-red-600 to-red-800 text-white shadow-2xl py-12">
