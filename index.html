@@ -8,15 +8,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .card-hover:hover { transform: translateY(-5px); transition: 0.3s ease; }
-        .modal-active { display: flex !important; animation: fadeIn 0.3s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
         #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.97); z-index: 1000; align-items: center; justify-content: center; overflow: hidden; touch-action: none; }
         #lightbox-img { transition: transform 0.1s ease-out; max-width: 90%; max-height: 90%; cursor: grab; border: 2px solid white; border-radius: 4px; }
-        
         .zoom-controls { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 1001; }
         .btn-zoom { background: white; width: 50px; height: 50px; border-radius: 50%; display: flex; items-center; justify-content: center; font-size: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); color: #1e293b; }
-
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
     </style>
@@ -48,10 +43,10 @@
     </header>
 
     <main class="container mx-auto px-4 py-8">
-        <div class="mb-12 space-y-4">
+        <div class="mb-12 space-y-4 text-center">
             <div id="candidate-cards" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
             
-            <div id="search-card-container"></div>
+            <div id="search-card-container" class="w-full"></div>
         </div>
 
         <div class="bg-white rounded-[2.5rem] shadow-xl p-6 border border-slate-200 mb-12">
@@ -70,7 +65,7 @@
             </div>
 
             <div class="lg:col-span-7 bg-white rounded-[2.5rem] shadow-xl p-8 border border-slate-200 flex flex-col h-[630px]">
-                <h2 class="text-xl font-bold mb-6 text-blue-900 uppercase flex items-center"><i class="fas fa-list-ol mr-3 text-red-600"></i> Danh sách 34 khu vực</h2>
+                <h2 class="text-xl font-bold mb-6 text-blue-900 uppercase flex items-center"><i class="fas fa-list-ol mr-3 text-red-600"></i> Danh sách 34 khu vực tra cứu</h2>
                 <input type="text" id="search" onkeyup="doSearch()" placeholder="Tìm tên ấp hoặc địa điểm..." class="w-full pl-6 pr-6 py-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-blue-600 mb-6 shadow-inner">
                 <div class="overflow-y-auto flex-1 custom-scrollbar pr-2">
                     <table class="w-full text-left border-collapse">
@@ -83,15 +78,6 @@
             </div>
         </div>
     </main>
-
-    <div id="infoModal" class="fixed inset-0 bg-black/90 hidden items-center justify-center p-4 z-50 backdrop-blur-sm">
-        <div id="modalContainer" class="bg-white rounded-[2.5rem] max-w-7xl w-full h-[90vh] overflow-hidden shadow-2xl relative">
-            <button id="closeBtn" onclick="closeModal()" class="absolute top-4 right-6 text-4xl text-white/70 hover:text-white z-[60] transition bg-black/40 w-12 h-12 rounded-full flex items-center justify-center shadow-lg">×</button>
-            <div id="modalBody" class="w-full h-full">
-                <div id="candidateList" class="w-full h-full"></div>
-            </div>
-        </div>
-    </div>
 
     <script>
         let globalData = {};
@@ -107,18 +93,12 @@
         function doPan(e) { if (!isPanning) return; translateX = e.clientX - startX; translateY = e.clientY - startY; applyTransform(); }
         function endPan() { isPanning = false; }
 
-        window.openModal = function(id) {
+        // HÀM MỞ LINK SANG TAB MỚI
+        window.openInNewTab = function(id) {
             const f = globalData.cac_chuc_nang.find(x => x.id === id);
-            if(!f) return;
-            const modalBody = document.getElementById('candidateList');
-            document.getElementById('modalContainer').style.padding = '0';
-            modalBody.innerHTML = `<iframe src="${f.link_target}" style="width: 100%; height: 100%; border: none;" allowfullscreen="allowfullscreen" allow="clipboard-write"></iframe>`;
-            document.getElementById('infoModal').classList.add('modal-active');
-        };
-
-        window.closeModal = function() {
-            document.getElementById('infoModal').classList.remove('modal-active');
-            document.getElementById('candidateList').innerHTML = '';
+            if(f && f.link_target) {
+                window.open(f.link_target, '_blank');
+            }
         };
 
         async function init() {
@@ -127,29 +107,28 @@
                 globalData = await res.json();
                 document.getElementById('headerTitle').innerText = globalData.tieu_de_trang;
                 
-                // Render 3 thẻ đầu tiên
-                const candidates = globalData.cac_chuc_nang.slice(0, 3);
-                document.getElementById('candidate-cards').innerHTML = candidates.map(item => `
-                    <div onclick="openModal('${item.id}')" class="card-hover cursor-pointer bg-white p-4 rounded-2xl border flex items-center space-x-3 shadow-sm border-slate-200">
+                // Render 3 thẻ hàng 1
+                document.getElementById('candidate-cards').innerHTML = globalData.cac_chuc_nang.slice(0, 3).map(item => `
+                    <div onclick="openInNewTab('${item.id}')" class="card-hover cursor-pointer bg-white p-4 rounded-2xl border flex items-center space-x-3 shadow-sm border-slate-200">
                         <div class="${item.mau} text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shrink-0">
                             <i class="fas ${item.icon} text-lg"></i>
                         </div>
-                        <div class="overflow-hidden">
-                            <h3 class="font-bold text-[10px] uppercase text-slate-700 truncate leading-tight">${item.tieu_de}</h3>
-                            <p class="text-[8px] text-slate-400 font-medium italic mt-1">Nhấn để xem</p>
+                        <div class="text-left">
+                            <h3 class="font-bold text-[10px] uppercase text-slate-700 leading-tight">${item.tieu_de}</h3>
+                            <p class="text-[8px] text-slate-400 font-medium italic mt-1">Mở danh sách chi tiết (Tab mới)</p>
                         </div>
                     </div>`).join('');
 
-                // Render thẻ tra cứu (Thẻ cuối cùng) nằm riêng hàng dưới
-                const searchItem = globalData.cac_chuc_nang[3];
+                // Render thẻ tra cứu hàng 2
+                const search = globalData.cac_chuc_nang[3];
                 document.getElementById('search-card-container').innerHTML = `
-                    <div onclick="openModal('${searchItem.id}')" class="card-hover cursor-pointer bg-white p-4 rounded-2xl border flex items-center space-x-3 shadow-sm border-slate-200 w-full">
-                        <div class="${searchItem.mau} text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shrink-0 animate-pulse">
-                            <i class="fas ${searchItem.icon} text-lg"></i>
+                    <div onclick="openInNewTab('${search.id}')" class="card-hover cursor-pointer bg-white p-4 rounded-2xl border flex items-center space-x-4 shadow-sm border-slate-200 group">
+                        <div class="${search.mau} text-white w-12 h-12 rounded-xl flex items-center justify-center shadow-lg shrink-0 animate-pulse">
+                            <i class="fas ${search.icon} text-xl"></i>
                         </div>
-                        <div class="overflow-hidden">
-                            <h3 class="font-bold text-[10px] uppercase text-slate-700 truncate md:whitespace-normal leading-tight">${searchItem.tieu_de}</h3>
-                            <p class="text-[8px] text-slate-400 font-medium italic mt-1 uppercase tracking-wider text-orange-600">Hệ thống tra cứu dữ liệu cử tri chính thức</p>
+                        <div class="text-left">
+                            <h3 class="font-bold text-[10px] uppercase text-slate-700 leading-tight group-hover:text-orange-600 transition">${search.tieu_de}</h3>
+                            <p class="text-[8px] text-orange-500 font-bold uppercase mt-1 tracking-wider italic">Hệ thống tra cứu dữ liệu cử tri chính thức (Mở Tab mới)</p>
                         </div>
                     </div>`;
 
@@ -159,7 +138,7 @@
                         <td class="p-5 text-sm font-bold text-slate-700 text-center">${item.ap}</td>
                         <td class="p-5 text-sm italic text-slate-500 text-center">
                             <a href="${item.map_link}" target="_blank" class="text-blue-600 font-bold hover:underline">
-                                <i class="fas fa-directions mr-2 text-red-500"></i> ${item.dia_diem}
+                                <i class="fas fa-directions mr-2 text-red-500 text-lg"></i> ${item.dia_diem}
                             </a>
                         </td>
                         <td class="p-5 text-right font-black text-red-600 text-lg">${item.so_luong}</td>
