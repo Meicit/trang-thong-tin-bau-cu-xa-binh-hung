@@ -8,8 +8,25 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .card-hover:hover { transform: translateY(-5px); transition: 0.3s ease; }
-        #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.97); z-index: 1000; align-items: center; justify-content: center; overflow: hidden; touch-action: none; }
-        #lightbox-img { transition: transform 0.1s ease-out; max-width: 90%; max-height: 90%; cursor: grab; border: 3px solid white; border-radius: 8px; }
+       /* Thay thế đoạn mã cũ của #lightbox và thêm thuộc tính cho ảnh */
+#lightbox { 
+    display: none; 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(255, 255, 255, 0.98); /* Đổi sang nền trắng */
+    z-index: 1000; 
+    align-items: center; 
+    justify-content: center; 
+    overflow: hidden; 
+}
+#lightbox-img { 
+    transition: transform 0.1s ease-out; 
+    max-width: 95%; 
+    max-height: 95%; 
+    cursor: grab; 
+    border: 1px solid #ddd; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+}
         .zoom-controls { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 1001; }
         .btn-zoom { background: white; width: 50px; height: 50px; border-radius: 50%; display: flex; items-center; justify-content: center; font-size: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); color: #1e293b; }
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
@@ -53,8 +70,13 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <div class="lg:col-span-5 bg-white rounded-[2rem] shadow-xl p-6 border border-slate-100 text-center">
-                <h2 class="text-xl font-black mb-4 text-blue-900 uppercase flex items-center justify-center"><i class="fas fa-map-marked-alt mr-3 text-red-600"></i> Bản đồ 34 khu vực bỏ phiếu</h2>
-                <div class="relative group cursor-zoom-in overflow-hidden rounded-2xl border bg-slate-50 h-[500px]" onclick="openLightbox('ban_do.png')">
+    <h2 class="text-xl font-black mb-4 text-blue-900 uppercase flex items-center justify-center">
+        <i class="fas fa-map-marked-alt mr-3 text-red-600"></i> Bản đồ 34 khu vực bỏ phiếu
+    </h2>
+    <div class="relative group cursor-zoom-in overflow-hidden rounded-2xl border bg-slate-50 h-[450px] md:h-[550px] flex items-center justify-center shadow-inner" onclick="openLightbox('ban_do.png')">
+        <img src="ban_do.png" class="max-w-full max-h-full object-contain p-2 transition duration-700 group-hover:scale-105" alt="Bản đồ">
+    </div>
+</div>
                     <img src="ban_do.png" class="w-full h-full object-contain p-2 transition duration-700 group-hover:scale-110">
                 </div>
             </div>
