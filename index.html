@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bầu Cử Bình Hưng 2026</title>
+    <title>Tra Cứu Bầu Cử Bình Hưng 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        .card-hover:hover { transform: translateY(-5px); transition: 0.3s ease; }
+        .card-hover:hover { transform: translateY(-8px); transition: 0.4s ease; }
         #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.97); z-index: 1000; align-items: center; justify-content: center; overflow: hidden; touch-action: none; }
-        #lightbox-img { transition: transform 0.1s ease-out; max-width: 90%; max-height: 90%; cursor: grab; border: 2px solid white; border-radius: 4px; }
-        .zoom-controls { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 1001; }
-        .btn-zoom { background: white; width: 50px; height: 50px; border-radius: 50%; display: flex; items-center; justify-content: center; font-size: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); color: #1e293b; }
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        #lightbox-img { transition: transform 0.1s ease-out; max-width: 90%; max-height: 90%; cursor: grab; border: 3px solid white; border-radius: 8px; }
+        .zoom-controls { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 15px; z-index: 1001; }
+        .btn-zoom { background: white; width: 60px; height: 60px; border-radius: 50%; display: flex; items-center; justify-content: center; font-size: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); color: #1e293b; }
+        .custom-scrollbar::-webkit-scrollbar { width: 8px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans leading-relaxed">
 
     <div id="lightbox">
-        <button onclick="closeLightbox()" class="fixed top-6 right-6 text-5xl text-white/50 hover:text-white z-[1002]">×</button>
+        <button onclick="closeLightbox()" class="fixed top-8 right-8 text-6xl text-white/50 hover:text-white z-[1002]">×</button>
         <div id="lightbox-container" onmousedown="startPan(event)" onmousemove="doPan(event)" onmouseup="endPan()" onmouseleave="endPan()" onwheel="handleWheel(event)">
-            <img id="lightbox-img" src="" alt="Sơ đồ" draggable="false">
+            <img id="lightbox-img" src="" alt="Zoom" draggable="false">
         </div>
         <div class="zoom-controls">
             <button class="btn-zoom" onclick="changeZoom(-0.5)"><i class="fas fa-minus"></i></button>
@@ -30,51 +30,42 @@
         </div>
     </div>
 
-    <header class="bg-gradient-to-r from-red-800 via-red-600 to-red-800 text-white shadow-2xl py-10">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 text-center relative z-10">
-            <img src="quoc_huy.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Emblem_of_Vietnam.svg/120px-Emblem_of_Vietnam.svg.png'" class="h-24 w-24 md:h-32 md:w-32 object-contain mx-auto md:mx-0 drop-shadow-lg">
+    <header class="bg-gradient-to-r from-red-800 via-red-600 to-red-800 text-white shadow-2xl py-12">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8 text-center relative z-10">
+            <img src="quoc_huy.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Emblem_of_Vietnam.svg/120px-Emblem_of_Vietnam.svg.png'" class="h-28 w-28 md:h-36 md:w-36 object-contain mx-auto md:mx-0 drop-shadow-2xl">
             <div>
-                <h1 class="text-xl md:text-3xl font-black uppercase tracking-tighter leading-tight drop-shadow-md">
-                    TRA CỨU THÔNG TIN BẦU CỬ <br>
-                    QUỐC HỘI KHÓA XVI <br>
-                    <span class="text-yellow-400 text-lg md:text-2xl">
-                        VÀ HỘI ĐỒNG NHÂN DÂN CÁC CẤP <br>
-                        NHIỆM KỲ 2026 - 2031
-                    </span>
-                </h1>
-                <div class="h-1 w-64 bg-yellow-400 mx-auto my-5 rounded-full shadow-lg"></div>
-                <p class="text-xl md:text-3xl font-black italic uppercase tracking-widest text-white/95">
-                    TRÊN ĐỊA BÀN XÃ BÌNH HƯNG
-                </p>
+                <h1 class="text-3xl md:text-6xl font-black uppercase tracking-tighter leading-tight drop-shadow-lg">BẦU CỬ QUỐC HỘI KHÓA XVI <br><span class="text-yellow-400 text-2xl md:text-5xl">VÀ ĐẠI BIỂU HĐND CÁC CẤP</span></h1>
+                <div class="h-2 w-64 bg-yellow-400 mx-auto my-6 rounded-full shadow-lg"></div>
+                <p class="text-2xl md:text-3xl font-black italic uppercase tracking-widest text-white/90" id="headerTitle">Đang tải...</p>
             </div>
-            <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=LOGO'" class="h-24 w-24 md:h-32 md:w-32 object-contain mx-auto md:mx-0 drop-shadow-lg">
+            <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=LOGO'" class="h-28 w-28 md:h-36 md:w-36 object-contain mx-auto md:mx-0 drop-shadow-2xl">
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-8">
-        <div class="mb-12 space-y-6">
-            <div id="candidate-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    <main class="container mx-auto px-4 py-12">
+        <div class="mb-16 space-y-10">
+            <div id="candidate-cards" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
             
             <div id="search-card-container"></div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            <div class="lg:col-span-5 bg-white rounded-[2rem] shadow-xl p-6 border border-slate-100 text-center">
-                <h2 class="text-xl font-black mb-4 text-blue-900 uppercase flex items-center justify-center"><i class="fas fa-map-marked-alt mr-3 text-red-600"></i> Sơ đồ khu vực</h2>
-                <div class="relative group cursor-zoom-in overflow-hidden rounded-2xl border bg-slate-50 h-[500px]" onclick="openLightbox('ban_do.png')">
-                    <img src="ban_do.png" class="w-full h-full object-contain p-2">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div class="lg:col-span-5 bg-white rounded-[3rem] shadow-2xl p-8 border border-slate-100 text-center">
+                <h2 class="text-3xl font-black mb-8 text-blue-900 uppercase flex items-center justify-center"><i class="fas fa-map-marked-alt mr-4 text-red-600"></i> Sơ đồ khu vực</h2>
+                <div class="relative group cursor-zoom-in overflow-hidden rounded-[2rem] border-2 border-slate-50 h-[600px] bg-slate-50 shadow-inner" onclick="openLightbox('ban_do.png')">
+                    <img src="ban_do.png" class="w-full h-full object-contain p-4 transition duration-700 group-hover:scale-110">
                 </div>
             </div>
 
-            <div class="lg:col-span-7 bg-white rounded-[2rem] shadow-xl p-6 border border-slate-100 flex flex-col h-[600px]">
-                <h2 class="text-xl font-black mb-4 text-blue-900 uppercase flex items-center"><i class="fas fa-list-ol mr-3 text-red-600"></i> Danh sách 34 khu vực</h2>
-                <input type="text" id="search" onkeyup="doSearch()" placeholder="Nhập tên ấp hoặc địa điểm..." class="w-full px-5 py-3 bg-slate-50 border rounded-xl outline-none mb-6 shadow-inner text-sm font-bold">
-                <div class="overflow-y-auto flex-1 custom-scrollbar pr-2">
+            <div class="lg:col-span-7 bg-white rounded-[3rem] shadow-2xl p-10 border border-slate-100 flex flex-col h-[700px]">
+                <h2 class="text-3xl font-black mb-8 text-blue-900 uppercase flex items-center"><i class="fas fa-list-ol mr-4 text-red-600"></i> Danh sách 34 khu vực</h2>
+                <input type="text" id="search" onkeyup="doSearch()" placeholder="Nhập tên ấp hoặc địa điểm để tìm nhanh..." class="w-full px-8 py-6 bg-slate-50 border-4 border-slate-50 rounded-[2rem] outline-none mb-10 shadow-inner text-xl font-bold">
+                <div class="overflow-y-auto flex-1 custom-scrollbar pr-4">
                     <table class="w-full text-left border-collapse">
-                        <thead class="sticky top-0 bg-white z-10 text-[9px] uppercase font-black text-slate-400 border-b">
-                            <tr><th class="p-2">Khu vực</th><th class="p-2 text-center">Ấp</th><th class="p-2">Địa điểm bỏ phiếu</th><th class="p-2 text-right">Cử tri</th></tr>
+                        <thead class="sticky top-0 bg-white z-10 text-base uppercase font-black text-slate-400 border-b-4 border-slate-50">
+                            <tr><th class="p-4">Khu vực</th><th class="p-4 text-center">Ấp</th><th class="p-4">Địa điểm bỏ phiếu</th><th class="p-4 text-right">Cử tri</th></tr>
                         </thead>
-                        <tbody id="content" class="divide-y divide-slate-100 text-[10px]"></tbody>
+                        <tbody id="content" class="divide-y divide-slate-100"></tbody>
                     </table>
                 </div>
             </div>
@@ -104,52 +95,50 @@
             try {
                 const res = await fetch('./data.json?v=' + Date.now());
                 globalData = await res.json();
+                document.getElementById('headerTitle').innerText = globalData.tieu_de_trang;
                 
-                // Render 3 thẻ ứng cử viên
+                // Hàng 1: 3 Thẻ ứng cử viên
                 document.getElementById('candidate-cards').innerHTML = globalData.cac_chuc_nang.slice(0, 3).map(item => `
-                    <div onclick="openLink('${item.id}')" class="card-hover cursor-pointer bg-white p-4 rounded-2xl border flex items-center space-x-4 shadow-md h-full">
-                        <div class="${item.mau} text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shrink-0">
-                            <i class="fas ${item.icon} text-lg"></i>
+                    <div onclick="openLink('${item.id}')" class="card-hover cursor-pointer bg-white p-8 rounded-[2.5rem] border-4 border-white flex items-center space-x-6 shadow-xl h-full group">
+                        <div class="${item.mau} text-white w-20 h-20 rounded-3xl flex items-center justify-center shadow-2xl shrink-0 group-hover:scale-110 transition">
+                            <i class="fas ${item.icon} text-4xl"></i>
                         </div>
                         <div class="text-left">
-                            <h3 class="font-bold text-xs md:text-sm uppercase text-slate-700 leading-tight">${item.tieu_de}</h3>
-                            <p class="text-[8px] text-slate-400 font-bold uppercase mt-1">Mở danh sách (Tab mới)</p>
+                            <h3 class="font-black text-xl md:text-2xl uppercase text-slate-800 leading-tight">${item.tieu_de}</h3>
+                            <p class="text-xs text-slate-400 font-black uppercase mt-3 tracking-widest italic">Nhấn để xem chi tiết</p>
                         </div>
                     </div>`).join('');
 
-                // Render thẻ tra cứu hàng dưới
+                // Hàng 2: Thẻ Tra cứu cử tri (Cực lớn)
                 const search = globalData.cac_chuc_nang[3];
                 document.getElementById('search-card-container').innerHTML = `
-                    <div onclick="openLink('${search.id}')" class="card-hover cursor-pointer bg-white p-5 rounded-2xl border flex items-center space-x-5 shadow-lg group w-full">
-                        <div class="${search.mau} text-white w-12 h-12 rounded-xl flex items-center justify-center shadow-xl shrink-0 animate-pulse">
-                            <i class="fas ${search.icon} text-xl"></i>
+                    <div onclick="openLink('${search.id}')" class="card-hover cursor-pointer bg-white p-10 rounded-[3rem] border-4 border-orange-50 flex items-center space-x-8 shadow-2xl group w-full">
+                        <div class="${search.mau} text-white w-24 h-24 rounded-[2rem] flex items-center justify-center shadow-2xl shrink-0 animate-bounce">
+                            <i class="fas ${search.icon} text-5xl"></i>
                         </div>
                         <div class="text-left">
-                            <h3 class="font-black text-xs md:text-base uppercase text-slate-900 leading-tight group-hover:text-orange-600 transition-colors">${search.tieu_de}</h3>
-                            <p class="text-[9px] text-orange-600 font-bold uppercase mt-1 italic">Hệ thống tra cứu dữ liệu cử tri chính thức</p>
+                            <h3 class="font-black text-xl md:text-3xl uppercase text-slate-900 leading-tight group-hover:text-orange-600 transition-colors">${search.tieu_de}</h3>
+                            <p class="text-sm text-orange-600 font-black uppercase mt-4 tracking-[0.3em] italic">Hệ thống tra cứu dữ liệu cử tri chính thức (Mở Tab mới)</p>
                         </div>
                     </div>`;
 
-                // Render bảng danh sách chữ nhỏ
                 document.getElementById('content').innerHTML = globalData.danh_sach_khu_vuc.map(item => `
-                    <tr class="hover:bg-blue-50/50 transition border-b">
-                        <td class="p-2 font-black text-blue-900 text-base text-center">${item.khu_vuc}</td>
-                        <td class="p-2 font-bold text-slate-700 text-center">${item.ap}</td>
-                        <td class="p-2 italic text-slate-500 text-center">
-                            <a href="${item.map_link}" target="_blank" class="text-blue-700 font-bold hover:underline flex items-center justify-center gap-1">
-                                <i class="fas fa-directions text-red-500 text-[10px]"></i> ${item.dia_diem}
+                    <tr class="hover:bg-blue-50/50 transition border-b border-slate-50">
+                        <td class="p-8 font-black text-blue-900 text-4xl text-center">${item.khu_vuc}</td>
+                        <td class="p-8 text-xl font-black text-slate-700 text-center">${item.ap}</td>
+                        <td class="p-8 text-lg italic text-slate-500 text-center">
+                            <a href="${item.map_link}" target="_blank" class="text-blue-700 font-black hover:underline flex items-center justify-center gap-4">
+                                <i class="fas fa-directions text-red-600 text-3xl"></i> ${item.dia_diem}
                             </a>
                         </td>
-                        <td class="p-2 text-right font-black text-red-600 text-[11px]">${item.so_luong}</td>
+                        <td class="p-8 text-right font-black text-red-600 text-3xl">${item.so_luong}</td>
                     </tr>`).join('');
             } catch (err) { console.error(err); }
         }
-
         window.doSearch = function() {
             const q = document.getElementById('search').value.toLowerCase();
             document.querySelectorAll('#content tr').forEach(r => r.style.display = r.innerText.toLowerCase().includes(q) ? '' : 'none');
         };
-
         window.onload = init;
     </script>
 </body>
