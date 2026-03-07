@@ -35,11 +35,42 @@
         .btn-zoom { background: white; width: 50px; height: 50px; border-radius: 50%; display: flex; items-center; justify-content: center; font-size: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); color: #1e293b; }
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        /* Nút đóng bổ sung ở phía dưới màn hình */
+.btn-close-bottom { 
+    position: fixed; 
+    bottom: 30px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    background: #ef4444; 
+    color: white; 
+    padding: 12px 40px; 
+    border-radius: 9999px; 
+    font-weight: bold; 
+    z-index: 1001; 
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-close-bottom:hover { background: #dc2626; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans leading-relaxed">
 
     <div id="lightbox">
+        <button onclick="closeLightbox()" class="fixed top-6 right-6 text-5xl text-slate-400 hover:text-red-600 z-[1002] transition">
+        <i class="fas fa-times-circle"></i>
+    </button>
+    
+    <div id="lightbox-container" ...>
+        <img id="lightbox-img" ...>
+    </div>
+
+    <div class="zoom-controls"> ... </div>
+
+    <button onclick="closeLightbox()" class="btn-close-bottom">
+        <i class="fas fa-times"></i> ĐÓNG XEM SƠ ĐỒ
+    </button>
         <button onclick="closeLightbox()" class="fixed top-6 right-6 text-5xl text-white/50 hover:text-white z-[1002]">×</button>
         <div id="lightbox-container" onmousedown="startPan(event)" onmousemove="doPan(event)" onmouseup="endPan()" onmouseleave="endPan()" onwheel="handleWheel(event)">
             <img id="lightbox-img" src="" alt="Zoom" draggable="false">
