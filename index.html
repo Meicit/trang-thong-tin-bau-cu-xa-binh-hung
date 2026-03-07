@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tra Cứu Bầu Cử Bình Hưng 2026</title>
+    <title>Bầu Cử Bình Hưng 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -21,7 +21,7 @@
     <div id="lightbox">
         <button onclick="closeLightbox()" class="fixed top-6 right-6 text-5xl text-white/50 hover:text-white z-[1002]">×</button>
         <div id="lightbox-container" onmousedown="startPan(event)" onmousemove="doPan(event)" onmouseup="endPan()" onmouseleave="endPan()" onwheel="handleWheel(event)">
-            <img id="lightbox-img" src="" alt="Zoom" draggable="false">
+            <img id="lightbox-img" src="" alt="Sơ đồ" draggable="false">
         </div>
         <div class="zoom-controls">
             <button class="btn-zoom" onclick="changeZoom(-0.5)"><i class="fas fa-minus"></i></button>
@@ -32,22 +32,22 @@
 
     <header class="bg-gradient-to-r from-red-800 via-red-600 to-red-800 text-white shadow-2xl py-10">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 text-center relative z-10">
-            <img src="quoc_huy.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Emblem_of_Vietnam.svg/120px-Emblem_of_Vietnam.svg.png'" class="h-24 w-24 md:h-32 md:w-32 object-contain mx-auto md:mx-0 drop-shadow-2xl">
+            <img src="quoc_huy.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Emblem_of_Vietnam.svg/120px-Emblem_of_Vietnam.svg.png'" class="h-24 w-24 md:h-32 md:w-32 object-contain mx-auto md:mx-0 drop-shadow-lg">
             <div>
-                <h1 class="text-2xl md:text-4xl font-black uppercase tracking-tighter leading-tight">
+                <h1 class="text-xl md:text-3xl font-black uppercase tracking-tighter leading-tight drop-shadow-md">
                     TRA CỨU THÔNG TIN BẦU CỬ <br>
                     QUỐC HỘI KHÓA XVI <br>
-                    <span class="text-yellow-400 text-xl md:text-2xl">
+                    <span class="text-yellow-400 text-lg md:text-2xl">
                         VÀ HỘI ĐỒNG NHÂN DÂN CÁC CẤP <br>
                         NHIỆM KỲ 2026 - 2031
                     </span>
                 </h1>
-                <div class="h-1.5 w-64 bg-yellow-400 mx-auto my-5 rounded-full shadow-lg"></div>
+                <div class="h-1 w-64 bg-yellow-400 mx-auto my-5 rounded-full shadow-lg"></div>
                 <p class="text-xl md:text-3xl font-black italic uppercase tracking-widest text-white/95">
                     TRÊN ĐỊA BÀN XÃ BÌNH HƯNG
                 </p>
             </div>
-            <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=LOGO'" class="h-24 w-24 md:h-32 md:w-32 object-contain mx-auto md:mx-0 drop-shadow-2xl">
+            <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=LOGO'" class="h-24 w-24 md:h-32 md:w-32 object-contain mx-auto md:mx-0 drop-shadow-lg">
         </div>
     </header>
 
@@ -68,12 +68,13 @@
 
             <div class="lg:col-span-7 bg-white rounded-[2rem] shadow-xl p-6 border border-slate-100 flex flex-col h-[600px]">
                 <h2 class="text-xl font-black mb-4 text-blue-900 uppercase flex items-center"><i class="fas fa-list-ol mr-3 text-red-600"></i> Danh sách 34 khu vực</h2>
-                <input type="text" id="search" onkeyup="doSearch()" placeholder="Tìm tên ấp hoặc địa điểm..." class="w-full px-6 py-3 bg-slate-50 border rounded-xl outline-none mb-6 shadow-inner text-sm font-bold">
-                <div class="overflow-y-auto flex-1 custom-scrollbar pr-2 text-[11px]"> <table class="w-full text-left border-collapse">
-                        <thead class="sticky top-0 bg-white z-10 text-[10px] uppercase font-black text-slate-400 border-b">
-                            <tr><th class="p-3">Khu vực</th><th class="p-3 text-center">Ấp</th><th class="p-3">Địa điểm bỏ phiếu</th><th class="p-3 text-right">Cử tri</th></tr>
+                <input type="text" id="search" onkeyup="doSearch()" placeholder="Nhập tên ấp hoặc địa điểm..." class="w-full px-5 py-3 bg-slate-50 border rounded-xl outline-none mb-6 shadow-inner text-sm font-bold">
+                <div class="overflow-y-auto flex-1 custom-scrollbar pr-2">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="sticky top-0 bg-white z-10 text-[9px] uppercase font-black text-slate-400 border-b">
+                            <tr><th class="p-2">Khu vực</th><th class="p-2 text-center">Ấp</th><th class="p-2">Địa điểm bỏ phiếu</th><th class="p-2 text-right">Cử tri</th></tr>
                         </thead>
-                        <tbody id="content" class="divide-y divide-slate-100"></tbody>
+                        <tbody id="content" class="divide-y divide-slate-100 text-[10px]"></tbody>
                     </table>
                 </div>
             </div>
@@ -97,3 +98,59 @@
         window.openLink = function(id) {
             const f = globalData.cac_chuc_nang.find(x => x.id === id);
             if(f && f.link_target) { window.open(f.link_target, '_blank'); }
+        };
+
+        async function init() {
+            try {
+                const res = await fetch('./data.json?v=' + Date.now());
+                globalData = await res.json();
+                
+                // Render 3 thẻ ứng cử viên
+                document.getElementById('candidate-cards').innerHTML = globalData.cac_chuc_nang.slice(0, 3).map(item => `
+                    <div onclick="openLink('${item.id}')" class="card-hover cursor-pointer bg-white p-4 rounded-2xl border flex items-center space-x-4 shadow-md h-full">
+                        <div class="${item.mau} text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shrink-0">
+                            <i class="fas ${item.icon} text-lg"></i>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="font-bold text-xs md:text-sm uppercase text-slate-700 leading-tight">${item.tieu_de}</h3>
+                            <p class="text-[8px] text-slate-400 font-bold uppercase mt-1">Mở danh sách (Tab mới)</p>
+                        </div>
+                    </div>`).join('');
+
+                // Render thẻ tra cứu hàng dưới
+                const search = globalData.cac_chuc_nang[3];
+                document.getElementById('search-card-container').innerHTML = `
+                    <div onclick="openLink('${search.id}')" class="card-hover cursor-pointer bg-white p-5 rounded-2xl border flex items-center space-x-5 shadow-lg group w-full">
+                        <div class="${search.mau} text-white w-12 h-12 rounded-xl flex items-center justify-center shadow-xl shrink-0 animate-pulse">
+                            <i class="fas ${search.icon} text-xl"></i>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="font-black text-xs md:text-base uppercase text-slate-900 leading-tight group-hover:text-orange-600 transition-colors">${search.tieu_de}</h3>
+                            <p class="text-[9px] text-orange-600 font-bold uppercase mt-1 italic">Hệ thống tra cứu dữ liệu cử tri chính thức</p>
+                        </div>
+                    </div>`;
+
+                // Render bảng danh sách chữ nhỏ
+                document.getElementById('content').innerHTML = globalData.danh_sach_khu_vuc.map(item => `
+                    <tr class="hover:bg-blue-50/50 transition border-b">
+                        <td class="p-2 font-black text-blue-900 text-base text-center">${item.khu_vuc}</td>
+                        <td class="p-2 font-bold text-slate-700 text-center">${item.ap}</td>
+                        <td class="p-2 italic text-slate-500 text-center">
+                            <a href="${item.map_link}" target="_blank" class="text-blue-700 font-bold hover:underline flex items-center justify-center gap-1">
+                                <i class="fas fa-directions text-red-500 text-[10px]"></i> ${item.dia_diem}
+                            </a>
+                        </td>
+                        <td class="p-2 text-right font-black text-red-600 text-[11px]">${item.so_luong}</td>
+                    </tr>`).join('');
+            } catch (err) { console.error(err); }
+        }
+
+        window.doSearch = function() {
+            const q = document.getElementById('search').value.toLowerCase();
+            document.querySelectorAll('#content tr').forEach(r => r.style.display = r.innerText.toLowerCase().includes(q) ? '' : 'none');
+        };
+
+        window.onload = init;
+    </script>
+</body>
+</html>
