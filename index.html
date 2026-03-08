@@ -3,167 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tra Cứu Thông tin Bầu Cử Trên địa bàn xã Bình Hưng 2026</title>
+    <title>Tra Cứu Bầu Cử Bình Hưng 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .card-hover:hover { transform: translateY(-5px); transition: 0.3s ease; }
-       /* Thay thế đoạn mã cũ của #lightbox và thêm thuộc tính cho ảnh */
-#lightbox { 
-    display: none; 
-    position: fixed; 
-    inset: 0; 
-    background: rgba(255, 255, 255, 0.98); /* Đổi sang nền trắng */
-    z-index: 1000; 
-    align-items: center; 
-    justify-content: center; 
-    overflow: hidden; 
-}
-#lightbox-img { 
-    transition: transform 0.1s ease-out; 
-    /* Giới hạn kích thước tối đa không quá 90% màn hình */
-    max-width: 90vw; 
-    max-height: 90vh; 
-    /* Giữ nguyên tỉ lệ và không cho phép tràn */
-    object-fit: contain; 
-    cursor: grab; 
-    border: 4px solid white; 
-    border-radius: 8px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-}
-        .zoom-controls { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 1001; }
-        .btn-zoom { background: white; width: 50px; height: 50px; border-radius: 50%; display: flex; items-center; justify-content: center; font-size: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); color: #1e293b; }
+        
+        /* Lightbox Fix: Nền trắng, chống tràn viền */
+        #lightbox { 
+            display: none; position: fixed; inset: 0; background: rgba(255, 255, 255, 0.98); 
+            z-index: 1000; align-items: center; justify-content: center; overflow: hidden; touch-action: none; 
+        }
+        #lightbox-img { 
+            transition: transform 0.1s ease-out; max-width: 90vw; max-height: 80vh; 
+            object-fit: contain; cursor: grab; border: 2px solid #ddd; border-radius: 8px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        /* Nút điều khiển */
+        .zoom-controls { position: fixed; bottom: 110px; left: 50%; transform: translateX(-50%); display: flex; gap: 15px; z-index: 1001; }
+        .btn-zoom { background: #1e293b; width: 50px; height: 50px; border-radius: 50%; display: flex; items-center; justify-content: center; font-size: 18px; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        
+        /* Nút đóng màu đỏ đồng bộ Header */
+        .btn-close-bottom { 
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); 
+            background: #be123c; color: white; padding: 12px 40px; border-radius: 9999px; 
+            font-weight: bold; z-index: 1001; box-shadow: 0 10px 20px rgba(190, 18, 60, 0.3); border: none; cursor: pointer;
+        }
+
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        /* Nút đóng bổ sung ở phía dưới màn hình */
-.btn-close-bottom { 
-    position: fixed; 
-    bottom: 30px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    background: #ef4444; 
-    color: red; 
-    padding: 12px 40px; 
-    border-radius: 9999px; 
-    font-weight: bold; 
-    z-index: 1001; 
-    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); 
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.btn-close-bottom:hover { background: #dc2626; }
-  /* Nút đóng Lightbox - Màu đỏ đồng bộ Header */
-.btn-close-bottom { 
-    position: fixed; 
-    bottom: 30px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    background-color: #be123c; /* Màu đỏ đậm trang trọng */
-    color: white; 
-    padding: 12px 35px; 
-    border-radius: 9999px; 
-    font-weight: 800; 
-    font-size: 14px;
-    z-index: 1001; 
-    box-shadow: 0 10px 20px rgba(190, 18, 60, 0.3); 
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255,255,255,0.2);
-}
-
-.btn-close-bottom:hover { 
-    background-color: #9f1239; 
-    transform: translateX(-50%) scale(1.05); 
-    box-shadow: 0 12px 25px rgba(190, 18, 60, 0.5);
-}
-
-/* Nút X ở góc trên */
-.btn-close-top {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    color: #94a3b8;
-    font-size: 40px;
-    z-index: 1002;
-    transition: color 0.3s;
-}
-.btn-close-top:hover { color: #ef4444; }
-  </style>
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans leading-relaxed">
 
     <div id="lightbox">
-    <button onclick="closeLightbox()" class="btn-close-top">
-        <i class="fas fa-times-circle"></i>
-    </button>
-    
-    <div id="lightbox-container" class="w-full h-full flex items-center justify-center" onmousedown="startPan(event)" onmousemove="doPan(event)" onmouseup="endPan()" onmouseleave="endPan()" onwheel="handleWheel(event)">
-        <img id="lightbox-img" src="" alt="Sơ đồ" class="pointer-events-none select-none">
-    </div>
-
-    <div class="zoom-controls" style="bottom: 110px;">
-        <button class="btn-zoom" onclick="changeZoom(-0.5)"><i class="fas fa-search-minus"></i></button>
-        <button class="btn-zoom" onclick="resetZoom()"><i class="fas fa-sync-alt"></i></button>
-        <button class="btn-zoom" onclick="changeZoom(0.5)"><i class="fas fa-search-plus"></i></button>
-    </div>
-
-    <button onclick="closeLightbox()" class="btn-close-bottom">
-        <i class="fas fa-times"></i> ĐÓNG XEM SƠ ĐỒ
-    </button>
-</div>
-       
-  
-
+        <button onclick="closeLightbox()" class="fixed top-6 right-6 text-5xl text-slate-400 hover:text-red-600 z-[1002]">×</button>
+        <div id="lightbox-container" class="w-full h-full flex items-center justify-center" onmousedown="startPan(event)" onmousemove="doPan(event)" onmouseup="endPan()" onmouseleave="endPan()" onwheel="handleWheel(event)">
+            <img id="lightbox-img" src="" alt="Phóng to" class="pointer-events-none select-none">
+        </div>
+        <div class="zoom-controls">
+            <button class="btn-zoom" onclick="changeZoom(-0.5)"><i class="fas fa-search-minus"></i></button>
+            <button class="btn-zoom" onclick="resetZoom()"><i class="fas fa-sync-alt"></i></button>
+            <button class="btn-zoom" onclick="changeZoom(0.5)"><i class="fas fa-search-plus"></i></button>
+        </div>
+        <button onclick="closeLightbox()" class="btn-close-bottom"><i class="fas fa-times mr-2"></i> ĐÓNG XEM ẢNH</button>
     </div>
 
     <header class="bg-gradient-to-r from-red-800 via-red-600 to-red-800 text-white shadow-2xl py-12">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8 relative z-10 text-center">
-            <img src="quoc_huy.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Emblem_of_Vietnam.svg/120px-Emblem_of_Vietnam.svg.png'" class="h-28 w-28 md:h-40 md:w-40 object-contain mx-auto md:mx-0 drop-shadow-2xl">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8 text-center relative z-10">
+            <img src="quoc_huy.png" class="h-28 w-28 md:h-40 md:w-40 object-contain drop-shadow-2xl">
             <div>
-                <h1 class="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-tight drop-shadow-lg">
-                    BẦU CỬ ĐẠI BIỂU QUỐC HỘI KHÓA XVI <br>
-                 <span class="text-yellow-400 text-3xl md:text-4xl">VÀ ĐẠI BIỂU HĐND CÁC CẤP <br> <span class="text-3xl md:text-4xl">NHIỆM KỲ 2026 - 2031</span>
-</span>
-                    
+                <h1 class="text-3xl md:text-6xl font-black uppercase tracking-tighter leading-tight drop-shadow-lg">
+                    TRA CỨU THÔNG TIN BẦU CỬ <br>
+                    QUỐC HỘI KHÓA XVI <br>
+                    <span class="text-yellow-400 text-2xl md:text-5xl">
+                        VÀ ĐẠI BIỂU HĐND CÁC CẤP <br>
+                        NHIỆM KỲ 2026 - 2031
+                    </span>
                 </h1>
                 <div class="h-2 w-64 bg-yellow-400 mx-auto my-6 rounded-full shadow-lg"></div>
-                <p class="text-2xl md:text-3xl font-black italic uppercase tracking-widest text-white/90" id="headerTitle">Đang tải...</p>
+                <p class="text-2xl md:text-3xl font-black italic uppercase text-white/95" id="headerTitle">Đang tải...</p>
             </div>
-            <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=LOGO'" class="h-28 w-28 md:h-40 md:w-40 object-contain mx-auto md:mx-0 drop-shadow-2xl">
+            <img src="logo.png" class="h-28 w-28 md:h-40 md:w-40 object-contain drop-shadow-2xl">
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-8">
-        <div class="mb-12 space-y-6">
-            <div id="candidate-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-          </div>
+        <div id="candidate-cards" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"></div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-           <div class="lg:col-span-5 bg-white rounded-[3rem] shadow-2xl p-8 border border-slate-100 text-center">
-    <h2 class="text-xl font-black mb-8 text-blue-900 uppercase flex items-center justify-center">
-        <i class="fas fa-map-marked-alt mr-4 text-red-600"></i> Bản đồ 34 khu vực bỏ phiếu
-    </h2>
-    <div class="relative group cursor-zoom-in overflow-hidden rounded-[2rem] border-2 border-slate-50 h-[500px] bg-slate-50 flex items-center justify-center shadow-inner" onclick="openLightbox('ban_do.png')">
-        <img src="ban_do.png" 
-             class="max-w-full max-h-full object-contain p-4 transition duration-700 group-hover:scale-110" 
-             alt="Bản đồ">
-    </div>
-</div>
-
-            <div class="lg:col-span-7 bg-white rounded-[2rem] shadow-xl p-8 border border-slate-100 flex flex-col h-[650px]">
-                <h2 class="text-xl font-black mb-6 text-blue-900 uppercase flex items-center"><i class="fas fa-list-ol mr-3 text-red-600"></i> Tra cứu thông tin 34 khu vực bỏ phiếu</h2>
-                <input type="text" id="search" onkeyup="doSearch()" placeholder="Nhập tên ấp hoặc địa điểm..." class="w-full px-6 py-4 bg-slate-50 border rounded-2xl outline-none mb-8 shadow-inner text-lg font-bold">
-                <div class="overflow-y-auto flex-1 custom-scrollbar pr-2">
-                    <table class="w-full text-left border-collapse">
-                        <thead class="sticky top-0 bg-white z-10 text-[10px] uppercase font-black text-slate-400 border-b-2 border-slate-50">
-                            <tr><th class="p-2">Khu vực</th><th class="p-2 text-center">Ấp</th><th class="p-2">Địa điểm bỏ phiếu</th><th class="p-2 text-right">Cử tri</th></tr>
-                        </thead>
-                        <tbody id="content" class="divide-y divide-slate-100 text-[11px]"></tbody>
-                    </table>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
+            <div class="bg-white rounded-[2.5rem] shadow-xl p-8 border border-slate-100 text-center">
+                <h2 class="text-2xl font-black mb-6 text-blue-900 uppercase flex items-center justify-center gap-3">
+                    <i class="fas fa-info-circle text-orange-500"></i> Hướng dẫn kiểm tra
+                </h2>
+                <div class="bg-slate-50 rounded-[2rem] h-[700px] flex items-center justify-center overflow-hidden border-2 border-slate-100 shadow-inner cursor-zoom-in" onclick="openLightbox('huong_dan.png')">
+                    <img src="huong_dan.png" class="max-w-full max-h-full object-contain p-2 transition duration-500 hover:scale-105" alt="Hướng dẫn">
                 </div>
+            </div>
+
+            <div class="bg-white rounded-[2.5rem] shadow-xl p-8 border border-slate-100 text-center">
+                <h2 class="text-2xl font-black mb-6 text-blue-900 uppercase flex items-center justify-center gap-3">
+                    <i class="fas fa-map-marked-alt text-red-600"></i> Sơ đồ khu vực bỏ phiếu
+                </h2>
+                <div class="bg-slate-50 rounded-[2rem] h-[700px] flex items-center justify-center overflow-hidden border-2 border-slate-100 shadow-inner cursor-zoom-in" onclick="openLightbox('ban_do.png')">
+                    <img src="ban_do.png" class="max-w-full max-h-full object-contain p-2 transition duration-500 hover:scale-105" alt="Sơ đồ">
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-[3rem] shadow-2xl p-8 border border-slate-100 flex flex-col h-[650px]">
+            <h2 class="text-2xl font-black mb-6 text-blue-900 uppercase flex items-center gap-4">
+                <i class="fas fa-list-ol text-red-600"></i> Danh sách tra cứu khu vực
+            </h2>
+            <input type="text" id="search" onkeyup="doSearch()" placeholder="Tìm tên ấp hoặc địa điểm..." class="w-full px-6 py-4 bg-slate-50 border-2 rounded-2xl outline-none mb-8 text-lg font-bold shadow-inner">
+            <div class="overflow-y-auto flex-1 custom-scrollbar pr-2">
+                <table class="w-full text-left border-collapse">
+                    <thead class="sticky top-0 bg-white z-10 text-[10px] uppercase font-black text-slate-400 border-b-2">
+                        <tr><th class="p-2">Khu vực</th><th class="p-2 text-center">Ấp</th><th class="p-2">Địa điểm bỏ phiếu</th><th class="p-2 text-right">Cử tri</th></tr>
+                    </thead>
+                    <tbody id="content" class="divide-y divide-slate-100 text-[11px]"></tbody>
+                </table>
             </div>
         </div>
     </main>
@@ -173,7 +113,7 @@
         let scale = 1, translateX = 0, translateY = 0, isPanning = false, startX, startY;
 
         function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').style.display = 'flex'; resetZoom(); }
-        function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
+        function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; resetZoom(); }
         function applyTransform() { document.getElementById('lightbox-img').style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`; }
         function changeZoom(amount) { scale = Math.min(Math.max(1, scale + amount), 6); if (scale === 1) { translateX = 0; translateY = 0; } applyTransform(); }
         function resetZoom() { scale = 1; translateX = 0; translateY = 0; applyTransform(); }
@@ -187,27 +127,28 @@
             if(f && f.link_target) { window.open(f.link_target, '_blank'); }
         };
 
-       async function init() {
+        async function init() {
             try {
                 const res = await fetch('./data.json?v=' + Date.now());
                 globalData = await res.json();
                 document.getElementById('headerTitle').innerText = globalData.tieu_de_trang;
                 
-                // HIỂN THỊ 3 THẺ ĐÃ SỬA LỖI
+                // Hiển thị 3 thẻ ứng cử viên
                 document.getElementById('candidate-cards').innerHTML = globalData.cac_chuc_nang.map(item => `
-                    <div onclick="openLink('${item.id}')" class="card-hover cursor-pointer bg-white p-5 rounded-2xl border flex items-center space-x-5 shadow-md h-full">
-                        <div class="${item.mau} text-white w-12 h-12 rounded-xl flex items-center justify-center shadow-lg shrink-0">
-                            <i class="fas ${item.icon} text-xl"></i>
+                    <div onclick="openLink('${item.id}')" class="card-hover cursor-pointer bg-white p-6 rounded-[2rem] border flex items-center space-x-5 shadow-md h-full">
+                        <div class="${item.mau} text-white w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg shrink-0">
+                            <i class="fas ${item.icon} text-2xl"></i>
                         </div>
                         <div class="text-left">
-                            <h3 class="font-bold text-sm md:text-base uppercase text-slate-700 leading-tight">${item.tieu_de}</h3>
-                            <p class="text-[9px] text-slate-400 font-bold mt-2 italic">Mở danh sách (Tab mới)</p>
+                            <h3 class="font-black text-xs md:text-sm uppercase text-slate-800 leading-tight">${item.tieu_de}</h3>
+                            <p class="text-[9px] text-slate-400 font-bold mt-2 italic">NHẤN ĐỂ XEM CHI TIẾT</p>
                         </div>
                     </div>`).join('');
-              // Bảng khu vực (Chữ nhỏ gọn)
+
+                // Bảng dữ liệu chữ siêu nhỏ
                 document.getElementById('content').innerHTML = globalData.danh_sach_khu_vuc.map(item => `
-                    <tr class="hover:bg-blue-50/50 transition border-b border-slate-50">
-                        <td class="p-3 font-black text-blue-900 text-lg text-center">${item.khu_vuc}</td>
+                    <tr class="hover:bg-blue-50/50 transition border-b">
+                        <td class="p-3 font-black text-blue-900 text-base text-center">${item.khu_vuc}</td>
                         <td class="p-3 font-bold text-slate-700 text-center">${item.ap}</td>
                         <td class="p-3 italic text-slate-500 text-center">
                             <a href="${item.map_link}" target="_blank" class="text-blue-700 font-bold hover:underline flex items-center justify-center gap-2">
