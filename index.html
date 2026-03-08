@@ -187,21 +187,21 @@
             if(f && f.link_target) { window.open(f.link_target, '_blank'); }
         };
 
-        async function init() {
+       async function init() {
             try {
                 const res = await fetch('./data.json?v=' + Date.now());
                 globalData = await res.json();
                 document.getElementById('headerTitle').innerText = globalData.tieu_de_trang;
                 
-                // 3 thẻ ứng cử viên
-                document.getElementById('candidate-cards').innerHTML = globalData.cac_chuc_nang.slice(0, 3).map(item => `
+                // HIỂN THỊ 3 THẺ ĐÃ SỬA LỖI
+                document.getElementById('candidate-cards').innerHTML = globalData.cac_chuc_nang.map(item => `
                     <div onclick="openLink('${item.id}')" class="card-hover cursor-pointer bg-white p-5 rounded-2xl border flex items-center space-x-5 shadow-md h-full">
                         <div class="${item.mau} text-white w-12 h-12 rounded-xl flex items-center justify-center shadow-lg shrink-0">
                             <i class="fas ${item.icon} text-xl"></i>
                         </div>
                         <div class="text-left">
                             <h3 class="font-bold text-sm md:text-base uppercase text-slate-700 leading-tight">${item.tieu_de}</h3>
-                            <p class="text-[9px] text-slate-400 font-bold mt-2 italic">Nhấn vào để xem chi tiết</p>
+                            <p class="text-[9px] text-slate-400 font-bold mt-2 italic">Mở danh sách (Tab mới)</p>
                         </div>
                     </div>`).join('');
               // Bảng khu vực (Chữ nhỏ gọn)
