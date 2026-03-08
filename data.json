@@ -1,23 +1,23 @@
 {
-  "tieu_de_trang": "CỔNG TRA CỨU THÔNG TIN XÃ BÌNH HƯNG",
+  "tieu_de_trang": "TRÊN ĐỊA BÀN XÃ BÌNH HƯNG 2026",
   "cac_chuc_nang": [
     {
       "id": "dv-quoc-hoi",
-      "tieu_de": "ỨNG CỬ VIÊN ĐẠI BIỂU QUỐC HỘI KHÓA XVI",
+      "tieu_de": "Ứng cử viên Đại biểu Quốc hội khóa XVI",
       "icon": "fa-landmark",
       "mau": "bg-red-700",
       "link_target": "https://heyzine.com/flip-book/f289d2fba5.html"
     },
     {
       "id": "dv-thanh-pho",
-      "tieu_de": "ỨNG CỬ VIÊN HĐND THÀNH PHỐ NHIỆM KỲ 2026 - 2031",
+      "tieu_de": "Ứng cử viên Đại biểu HĐND Thành phố nhiệm kỳ 2026-2031",
       "icon": "fa-city",
       "mau": "bg-blue-800",
       "link_target": "https://heyzine.com/flip-book/fe9d6c0358.html"
     },
     {
       "id": "dv-xa",
-      "tieu_de": "ỨNG CỬ VIÊN HĐND XÃ BÌNH HƯNG NHIỆM KỲ 2026 - 2031",
+      "tieu_de": "Ứng cử viên Đại biểu HĐND xã Bình Hưng nhiệm kỳ 2026-2031",
       "icon": "fa-users",
       "mau": "bg-emerald-700",
       "link_target": "https://heyzine.com/flip-book/eff50ee88d.html"
