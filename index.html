@@ -139,8 +139,7 @@
     <main class="container mx-auto px-4 py-8">
         <div class="mb-12 space-y-6">
             <div id="candidate-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-            <div id="search-card-container"></div>
-        </div>
+          </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
            <div class="lg:col-span-5 bg-white rounded-[3rem] shadow-2xl p-8 border border-slate-100 text-center">
@@ -205,21 +204,7 @@
                             <p class="text-[9px] text-slate-400 font-bold mt-2 italic">Nhấn vào để xem chi tiết</p>
                         </div>
                     </div>`).join('');
-
-                // Thẻ tra cứu
-                const search = globalData.cac_chuc_nang[3];
-                document.getElementById('search-card-container').innerHTML = `
-                    <div onclick="openLink('${search.id}')" class="card-hover cursor-pointer bg-white p-6 rounded-2xl border flex items-center space-x-6 shadow-lg group w-full">
-                        <div class="${search.mau} text-white w-14 h-14 rounded-xl flex items-center justify-center shadow-xl shrink-0 animate-pulse">
-                            <i class="fas ${search.icon} text-2xl"></i>
-                        </div>
-                        <div class="text-left">
-                            <h3 class="font-black text-sm md:text-lg uppercase text-slate-900 leading-tight group-hover:text-orange-600 transition-colors">${search.tieu_de}</h3>
-                            <p class="text-[10px] text-orange-600 font-bold uppercase mt-1 italic">Hệ thống tra cứu dữ liệu cử tri chính thức</p>
-                        </div>
-                    </div>`;
-
-                // Bảng khu vực (Chữ nhỏ gọn)
+              // Bảng khu vực (Chữ nhỏ gọn)
                 document.getElementById('content').innerHTML = globalData.danh_sach_khu_vuc.map(item => `
                     <tr class="hover:bg-blue-50/50 transition border-b border-slate-50">
                         <td class="p-3 font-black text-blue-900 text-lg text-center">${item.khu_vuc}</td>
