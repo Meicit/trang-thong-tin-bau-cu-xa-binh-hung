@@ -163,7 +163,11 @@
             try {
                 const res = await fetch('./data.json?v=' + Date.now());
                 globalData = await res.json();
-                document.getElementById('headerTitle').innerText = globalData.tieu_de_trang;
+                // Sử dụng .innerHTML thay vì .innerText để trình duyệt đọc được thẻ <br>
+const originalTitle = globalData.tieu_de_trang;
+// Thay thế chữ "XÃ" bằng "<br>XÃ" để xuống hàng ngay trước chữ Xã
+document.getElementById('headerTitle').innerHTML = originalTitle.replace("XÃ", "<br>XÃ");
+                // document.getElementById('headerTitle').innerText = globalData.tieu_de_trang;
                 
                 // Hiển thị 3 thẻ ứng cử viên
                 document.getElementById('candidate-cards').innerHTML = globalData.cac_chuc_nang.map(item => `
