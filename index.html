@@ -9,10 +9,9 @@
     <style>
         .card-hover:hover { transform: translateY(-5px); transition: 0.3s ease; }
         
-        /* Lightbox Fix: Nền trắng, chống tràn viền */
         #lightbox { 
             display: none; position: fixed; inset: 0; background: rgba(255, 255, 255, 0.98); 
-            z-index: 1000; align-items: center; justify-content: center; overflow: hidden; touch-action: pinch-zoom; 
+            z-index: 1000; align-items: center; justify-content: center; overflow: hidden; touch-action: none; 
         }
         #lightbox-img { 
             transition: transform 0.1s ease-out; max-width: 90vw; max-height: 80vh; 
@@ -20,11 +19,9 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.1);
         }
 
-        /* Nút điều khiển */
         .zoom-controls { position: fixed; bottom: 110px; left: 50%; transform: translateX(-50%); display: flex; gap: 15px; z-index: 1001; }
         .btn-zoom { background: #1e293b; width: 50px; height: 50px; border-radius: 50%; display: flex; items-center; justify-content: center; font-size: 18px; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         
-        /* Nút đóng màu đỏ đồng bộ Header */
         .btn-close-bottom { 
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); 
             background: #be123c; color: white; padding: 12px 40px; border-radius: 9999px; 
@@ -33,18 +30,26 @@
 
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        /* Khung chứa video tỉ lệ 16:9 */
-.aspect-video {
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    background-color: #000;
-    border-radius: 1.5rem;
-    overflow: hidden;
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
-}
+        
+        .aspect-video {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            background-color: #000;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans leading-relaxed">
+
+    <audio id="bgMusic" loop>
+        <source src="nhac_nen.mp3" type="audio/mpeg">
+    </audio>
+
+    <button onclick="toggleMusic()" id="musicBtn" class="fixed bottom-32 right-6 z-[999] bg-white/90 p-3 rounded-full shadow-lg border border-slate-200 text-red-600 hover:bg-red-50 transition">
+        <i id="musicIcon" class="fas fa-volume-mute"></i>
+    </button>
 
     <div id="lightbox">
         <button onclick="closeLightbox()" class="fixed top-6 right-6 text-5xl text-slate-400 hover:text-red-600 z-[1002]">×</button>
@@ -63,10 +68,10 @@
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8 text-center relative z-10">
             <img src="quoc_huy.png" class="h-28 w-28 md:h-40 md:w-40 object-contain drop-shadow-2xl">
             <div>
-                <h1 class="text-2xl md:text-5xl font-black uppercase tracking-tighter leading-tight drop-shadow-lg">
+                <h1 class="text-2xl md:text-5xl font-black uppercase tracking-tighter leading-tight drop-shadow-lg text-white">
                     TRA CỨU THÔNG TIN BẦU CỬ<br>
                     ĐẠI BIỂU QUỐC HỘI KHÓA XVI <br>
-                    <span class="text-yellow-400 text-2xl md:text-5xl">
+                    <span class="text-yellow-400">
                         VÀ ĐẠI BIỂU HĐND CÁC CẤP <br>
                         NHIỆM KỲ 2026 - 2031
                     </span>
@@ -108,47 +113,97 @@
             <input type="text" id="search" onkeyup="doSearch()" placeholder="Tìm tên ấp hoặc địa điểm..." class="w-full px-6 py-4 bg-slate-50 border-2 rounded-2xl outline-none mb-8 text-lg font-bold shadow-inner">
             <div class="overflow-y-auto flex-1 custom-scrollbar pr-2">
                 <table class="w-full text-left border-collapse">
-                  <thead class="sticky top-0 bg-white z-10 text-[10px] uppercase font-black text-red-600 border-b-2">
-    <tr>
-        <th class="p-2 text-center">Đơn vị bầu cử</th>
-        <th class="p-2 text-center">Ấp</th>
-        <th class="p-2 text-center">Địa điểm bỏ phiếu</th>
-        <th class="p-2 text-center">Số lượng cử tri</th>
-    </tr>
-</thead>
+                    <thead class="sticky top-0 bg-white z-10 text-[10px] uppercase font-black text-red-600 border-b-2">
+                        <tr>
+                            <th class="p-2 text-center">Đơn vị bầu cử</th>
+                            <th class="p-2 text-center">Ấp</th>
+                            <th class="p-2 text-center">Địa điểm bỏ phiếu</th>
+                            <th class="p-2 text-center">Số lượng cử tri</th>
+                        </tr>
+                    </thead>
                     <tbody id="content" class="divide-y divide-slate-100 text-[11px]"></tbody>
                 </table>
             </div>
         </div>
+
         <div class="mt-12 mb-20">
-    <div class="bg-white rounded-[2.5rem] shadow-xl p-8 border border-slate-100 text-center max-w-4xl mx-auto">
-        <h2 class="text-2xl font-black mb-6 text-blue-900 uppercase flex items-center justify-center gap-3">
-            <i class="fas fa-play-circle text-red-600"></i> Video Tuyên Truyền Bầu Cử
-        </h2>
-        <div class="aspect-video">
-            <iframe 
-                class="w-full h-full" 
-                src="https://www.youtube.com/embed/g6nUHk8DHyk" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
+            <div class="bg-white rounded-[2.5rem] shadow-xl p-8 border border-slate-100 text-center max-w-4xl mx-auto">
+                <h2 class="text-2xl font-black mb-6 text-blue-900 uppercase flex items-center justify-center gap-3">
+                    <i class="fas fa-play-circle text-red-600"></i> Video Tuyên Truyền Bầu Cử
+                </h2>
+                <div class="aspect-video">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/g6nUHk8DHyk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p class="mt-4 text-slate-500 italic font-medium">Nhấn nút Play để xem video hướng dẫn chi tiết</p>
+            </div>
         </div>
-        <p class="mt-4 text-slate-500 italic font-medium">Nhấn nút Play để xem video hướng dẫn chi tiết</p>
-    </div>
-</div>
     </main>
 
     <script>
         let globalData = {};
         let scale = 1, translateX = 0, translateY = 0, isPanning = false, startX, startY;
+        let lastTouchDistance = 0;
 
+        // Xử lý Audio
+        const bgMusic = document.getElementById('bgMusic');
+        const musicIcon = document.getElementById('musicIcon');
+
+        function initAudio() {
+            bgMusic.play().then(() => {
+                musicIcon.classList.remove('fa-volume-mute');
+                musicIcon.classList.add('fa-volume-up');
+                document.removeEventListener('click', initAudio);
+                document.removeEventListener('touchstart', initAudio);
+            }).catch(e => console.log("Audio Autoplay blocked"));
+        }
+        document.addEventListener('click', initAudio);
+        document.addEventListener('touchstart', initAudio);
+
+        function toggleMusic() {
+            if (bgMusic.paused) { bgMusic.play(); musicIcon.className = 'fas fa-volume-up'; }
+            else { bgMusic.pause(); musicIcon.className = 'fas fa-volume-mute'; }
+        }
+
+        // Lightbox Functions
         function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').style.display = 'flex'; resetZoom(); }
         function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; resetZoom(); }
         function applyTransform() { document.getElementById('lightbox-img').style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`; }
         function changeZoom(amount) { scale = Math.min(Math.max(1, scale + amount), 6); if (scale === 1) { translateX = 0; translateY = 0; } applyTransform(); }
         function resetZoom() { scale = 1; translateX = 0; translateY = 0; applyTransform(); }
+
+        // Touch Control Functions
+        function handleTouchStart(e) {
+            if (e.touches.length === 2) {
+                lastTouchDistance = Math.hypot(e.touches[0].pageX - e.touches[1].pageX, e.touches[0].pageY - e.touches[1].pageY);
+            } else if (e.touches.length === 1) {
+                isPanning = true;
+                startX = e.touches[0].clientX - translateX;
+                startY = e.touches[0].clientY - translateY;
+            }
+        }
+
+        function handleTouchMove(e) {
+            if (e.touches.length === 2 && lastTouchDistance > 0) {
+                e.preventDefault();
+                const currentDistance = Math.hypot(e.touches[0].pageX - e.touches[1].pageX, e.touches[0].pageY - e.touches[1].pageY);
+                const delta = currentDistance / lastTouchDistance;
+                changeZoom(delta > 1 ? 0.1 : -0.1);
+                lastTouchDistance = currentDistance;
+            } else if (e.touches.length === 1 && isPanning && scale > 1) {
+                translateX = e.touches[0].clientX - startX;
+                translateY = e.touches[0].clientY - startY;
+                applyTransform();
+            }
+        }
+
+        function handleTouchEnd() { isPanning = false; lastTouchDistance = 0; }
+
+        const container = document.getElementById('lightbox-container');
+        container.addEventListener('touchstart', handleTouchStart, { passive: false });
+        container.addEventListener('touchmove', handleTouchMove, { passive: false });
+        container.addEventListener('touchend', handleTouchEnd);
+
+        // PC Events
         function handleWheel(e) { e.preventDefault(); changeZoom(e.deltaY < 0 ? 0.3 : -0.3); }
         function startPan(e) { if (scale <= 1) return; isPanning = true; startX = e.clientX - translateX; startY = e.clientY - translateY; }
         function doPan(e) { if (!isPanning) return; translateX = e.clientX - startX; translateY = e.clientY - startY; applyTransform(); }
@@ -163,13 +218,10 @@
             try {
                 const res = await fetch('./data.json?v=' + Date.now());
                 globalData = await res.json();
-                // Sử dụng .innerHTML thay vì .innerText để trình duyệt đọc được thẻ <br>
-const originalTitle = globalData.tieu_de_trang;
-// Thay thế chữ "XÃ" bằng "<br>XÃ" để xuống hàng ngay trước chữ Xã
-document.getElementById('headerTitle').innerHTML = originalTitle.replace("XÃ", "<br>XÃ");
-                // document.getElementById('headerTitle').innerText = globalData.tieu_de_trang;
                 
-                // Hiển thị 3 thẻ ứng cử viên
+                const originalTitle = globalData.tieu_de_trang;
+                document.getElementById('headerTitle').innerHTML = originalTitle.replace("XÃ", "<br>XÃ");
+
                 document.getElementById('candidate-cards').innerHTML = globalData.cac_chuc_nang.map(item => `
                     <div onclick="openLink('${item.id}')" class="card-hover cursor-pointer bg-white p-6 rounded-[2rem] border flex items-center space-x-5 shadow-md h-full">
                         <div class="${item.mau} text-white w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg shrink-0">
@@ -181,7 +233,6 @@ document.getElementById('headerTitle').innerHTML = originalTitle.replace("XÃ", 
                         </div>
                     </div>`).join('');
 
-                // Bảng dữ liệu chữ siêu nhỏ
                 document.getElementById('content').innerHTML = globalData.danh_sach_khu_vuc.map(item => `
                     <tr class="hover:bg-blue-50/50 transition border-b">
                         <td class="p-3 font-black text-blue-900 text-base text-center">${item.khu_vuc}</td>
@@ -191,7 +242,7 @@ document.getElementById('headerTitle').innerHTML = originalTitle.replace("XÃ", 
                                 <i class="fas fa-directions text-red-500 text-sm"></i> ${item.dia_diem}
                             </a>
                         </td>
-                        <td class="p-3 text-right font-black text-red-600">${item.so_luong}</td>
+                        <td class="p-3 text-center font-black text-red-600">${item.so_luong}</td>
                     </tr>`).join('');
             } catch (err) { console.error(err); }
         }
@@ -199,56 +250,6 @@ document.getElementById('headerTitle').innerHTML = originalTitle.replace("XÃ", 
             const q = document.getElementById('search').value.toLowerCase();
             document.querySelectorAll('#content tr').forEach(r => r.style.display = r.innerText.toLowerCase().includes(q) ? '' : 'none');
         };
-        //DÁN CODE MỚI
-        let lastTouchDistance = 0;
-
-// Hàm xử lý khi bắt đầu chạm vào màn hình
-function handleTouchStart(e) {
-    if (e.touches.length === 2) {
-        // Tính khoảng cách giữa 2 ngón tay khi bắt đầu chạm
-        lastTouchDistance = Math.hypot(
-            e.touches[0].pageX - e.touches[1].pageX,
-            e.touches[0].pageY - e.touches[1].pageY
-        );
-    } else if (e.touches.length === 1) {
-        isPanning = true;
-        startX = e.touches[0].clientX - translateX;
-        startY = e.touches[0].clientY - translateY;
-    }
-}
-
-// Hàm xử lý khi di chuyển ngón tay
-function handleTouchMove(e) {
-    if (e.touches.length === 2 && lastTouchDistance > 0) {
-        e.preventDefault(); // Ngăn trang web bị cuộn khi đang zoom
-        const currentDistance = Math.hypot(
-            e.touches[0].pageX - e.touches[1].pageX,
-            e.touches[0].pageY - e.touches[1].pageY
-        );
-        
-        // Tính toán tỉ lệ zoom mới dựa trên sự thay đổi khoảng cách ngón tay
-        const delta = currentDistance / lastTouchDistance;
-        const zoomStep = delta > 1 ? 0.2 : -0.2;
-        changeZoom(zoomStep);
-        
-        lastTouchDistance = currentDistance;
-    } else if (e.touches.length === 1 && isPanning) {
-        translateX = e.touches[0].clientX - startX;
-        translateY = e.touches[0].clientY - startY;
-        applyTransform();
-    }
-}
-
-function handleTouchEnd() {
-    isPanning = false;
-    lastTouchDistance = 0;
-}
-
-// Đăng ký các sự kiện vào container của Lightbox
-const container = document.getElementById('lightbox-container');
-container.addEventListener('touchstart', handleTouchStart, { passive: false });
-container.addEventListener('touchmove', handleTouchMove, { passive: false });
-container.addEventListener('touchend', handleTouchEnd);
         window.onload = init;
     </script>
 </body>
