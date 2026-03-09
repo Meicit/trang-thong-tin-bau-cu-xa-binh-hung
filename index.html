@@ -94,13 +94,13 @@
 
         <div class="bg-white rounded-[3rem] shadow-2xl p-8 border border-slate-100 flex flex-col h-[650px]">
             <h2 class="text-2xl font-black mb-6 text-blue-900 uppercase flex items-center gap-4">
-                <i class="fas fa-list-ol text-red-600"></i> Danh sách tra cứu khu vực
+                <i class="fas fa-list-ol text-red-600"></i> Danh sách tra cứu đơn vị bầu cử
             </h2>
             <input type="text" id="search" onkeyup="doSearch()" placeholder="Tìm tên ấp hoặc địa điểm..." class="w-full px-6 py-4 bg-slate-50 border-2 rounded-2xl outline-none mb-8 text-lg font-bold shadow-inner">
             <div class="overflow-y-auto flex-1 custom-scrollbar pr-2">
                 <table class="w-full text-left border-collapse">
                     <thead class="sticky top-0 bg-white z-10 text-[10px] uppercase font-black text-slate-400 border-b-2">
-                        <tr><th class="p-2">Khu vực</th><th class="p-2 text-center">Ấp</th><th class="p-2">Địa điểm bỏ phiếu</th><th class="p-2 text-right">Cử tri</th></tr>
+                        <tr><th class="p-2">Đơn vị bầu cử </th><th class="p-2 text-center">Ấp</th><th class="p-2">Địa điểm bỏ phiếu</th><th class="p-2 text-right">Số lượng cử tri</th></tr>
                     </thead>
                     <tbody id="content" class="divide-y divide-slate-100 text-[11px]"></tbody>
                 </table>
