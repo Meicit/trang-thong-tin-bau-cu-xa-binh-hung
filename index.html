@@ -12,7 +12,7 @@
         /* Lightbox Fix: Nền trắng, chống tràn viền */
         #lightbox { 
             display: none; position: fixed; inset: 0; background: rgba(255, 255, 255, 0.98); 
-            z-index: 1000; align-items: center; justify-content: center; overflow: hidden; touch-action: none; 
+            z-index: 1000; align-items: center; justify-content: center; overflow: hidden; touch-action: pinch-zoom; 
         }
         #lightbox-img { 
             transition: transform 0.1s ease-out; max-width: 90vw; max-height: 80vh; 
@@ -168,6 +168,56 @@
             const q = document.getElementById('search').value.toLowerCase();
             document.querySelectorAll('#content tr').forEach(r => r.style.display = r.innerText.toLowerCase().includes(q) ? '' : 'none');
         };
+        //DÁN CODE MỚI
+        let lastTouchDistance = 0;
+
+// Hàm xử lý khi bắt đầu chạm vào màn hình
+function handleTouchStart(e) {
+    if (e.touches.length === 2) {
+        // Tính khoảng cách giữa 2 ngón tay khi bắt đầu chạm
+        lastTouchDistance = Math.hypot(
+            e.touches[0].pageX - e.touches[1].pageX,
+            e.touches[0].pageY - e.touches[1].pageY
+        );
+    } else if (e.touches.length === 1) {
+        isPanning = true;
+        startX = e.touches[0].clientX - translateX;
+        startY = e.touches[0].clientY - translateY;
+    }
+}
+
+// Hàm xử lý khi di chuyển ngón tay
+function handleTouchMove(e) {
+    if (e.touches.length === 2 && lastTouchDistance > 0) {
+        e.preventDefault(); // Ngăn trang web bị cuộn khi đang zoom
+        const currentDistance = Math.hypot(
+            e.touches[0].pageX - e.touches[1].pageX,
+            e.touches[0].pageY - e.touches[1].pageY
+        );
+        
+        // Tính toán tỉ lệ zoom mới dựa trên sự thay đổi khoảng cách ngón tay
+        const delta = currentDistance / lastTouchDistance;
+        const zoomStep = delta > 1 ? 0.2 : -0.2;
+        changeZoom(zoomStep);
+        
+        lastTouchDistance = currentDistance;
+    } else if (e.touches.length === 1 && isPanning) {
+        translateX = e.touches[0].clientX - startX;
+        translateY = e.touches[0].clientY - startY;
+        applyTransform();
+    }
+}
+
+function handleTouchEnd() {
+    isPanning = false;
+    lastTouchDistance = 0;
+}
+
+// Đăng ký các sự kiện vào container của Lightbox
+const container = document.getElementById('lightbox-container');
+container.addEventListener('touchstart', handleTouchStart, { passive: false });
+container.addEventListener('touchmove', handleTouchMove, { passive: false });
+container.addEventListener('touchend', handleTouchEnd);
         window.onload = init;
     </script>
 </body>
